@@ -1,2 +1,2 @@
-# Software de Gestão de Competencias do Leds
+# Software de Gestão de Competencias
 Repositório para o trabalho da disciplina de Desenvolvimento Web - Professor Felipe - Ifes Serra
