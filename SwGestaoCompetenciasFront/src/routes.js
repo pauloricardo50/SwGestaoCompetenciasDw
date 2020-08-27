@@ -22,8 +22,8 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/table",
-    name: "Table List",
+    path: "/projeto",
+    name: "Projetos",
     icon: "pe-7s-note2",
     component: TableList,
     layout: "/admin"

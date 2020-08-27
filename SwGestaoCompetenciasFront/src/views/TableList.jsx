@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { Grid, Row, Col, Table } from "react-bootstrap";
-
+import Button from "components/CustomButton/CustomButton.jsx";
 import Card from "components/Card/Card.jsx";
 import { thArray, tdArray } from "variables/Variables.jsx";
 
-class TableList extends Component {
+class ListaProjetos extends Component {
   render() {
     return (
       <div className="content">
         <Grid fluid>
+        <Button bsStyle="info" pullRight fill type="submit"> Adicionar </Button>
           <Row>
             <Col md={12}>
               <Card
@@ -17,6 +18,7 @@ class TableList extends Component {
                 ctTableFullWidth
                 ctTableResponsive
                 content={
+                  
                   <Table striped hover>
                     <thead>
                       <tr>
@@ -79,4 +81,4 @@ class TableList extends Component {
   }
 }
 
-export default TableList;
+export default ListaProjetos;
