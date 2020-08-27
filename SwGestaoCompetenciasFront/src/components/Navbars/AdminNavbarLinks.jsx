@@ -36,7 +36,7 @@ class AdminNavbarLinks extends Component {
           </NavItem>
         </Nav>
         <Nav pullRight>  
-          <NavItem eventKey={3} href="#">
+          <NavItem eventKey={3} href="/login-admin">
             Sair
           </NavItem>
         </Nav>
