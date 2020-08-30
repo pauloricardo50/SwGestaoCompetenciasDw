@@ -475,8 +475,8 @@ var dataPie = {
   series: [60, 20, 10,10]
 };
 var legendPie = {
-  names: ["Open", "Bounce", "Unsubscribe"],
-  types: ["info", "danger", "warning"]
+  names: ["Open", "Bounce", "Unsubscribe","Teste"],
+  types: ["info", "danger", "warning","success"]
 };
 
 // Data for Line Chart
@@ -528,6 +528,66 @@ var responsiveSales = [
 var legendSales = {
   names: ["Open", "Click", "Click Second Time"],
   types: ["info", "danger", "warning"]
+};
+
+//Grafico Atividades
+
+var graficoAtividades = {
+  labels: [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro"
+  ],
+  series: [
+    [26, 78, 62, 66, 98, 130, 105, 115,124,220,105,52]
+  ]
+};
+var optionsAtividades = {
+  low: 0,
+  high: 300,
+  showArea: false,
+  height: "245px",
+  axisX: {
+    showGrid: false
+  },
+  lineSmooth: true,
+  showLine: true,
+  showPoint: true,
+  fullWidth: true,
+  chartPadding: {
+    right: 50
+  }
+};
+var responsiveAtividades = [
+  [
+    "screen and (max-width: 640px)",
+    {
+      axisX: {
+        labelInterpolationFnc: function(value) {
+          return value[0];
+        }
+      }
+    }
+  ]
+];
+
+// Grafico Linguagens
+var dataLinguagens = {
+  labels: ["40%", "35%", "15%",,"10%"],
+  series: [60, 20, 10,,10]
+};
+var legendLinguagens = {
+  names: ["Python", "Javascript", "PHP","Java"],
+  types: ["info", "danger", "warning","success"]
 };
 
 // Data for Bar Chart
@@ -590,5 +650,10 @@ module.exports = {
   dataBar,
   optionsBar,
   responsiveBar,
-  legendBar // For charts (Dashboard view)
+  legendBar, // For charts (Dashboard view)
+  graficoAtividades,
+  optionsAtividades,
+  responsiveAtividades,
+  dataLinguagens,
+  legendLinguagens
 };

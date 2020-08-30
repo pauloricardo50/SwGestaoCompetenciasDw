@@ -2,7 +2,7 @@ import Dashboard from "views/Dashboard.jsx";
 import UserProfile from "views/UserProfile.jsx";
 import TableList from "views/TableList.jsx";
 import Typography from "views/Typography.jsx";
-import Icons from "views/Icons.jsx";
+import Relatorios from "views/Relatorios.jsx";
 import Notifications from "views/Notifications.jsx";
 
 const dashboardRoutes = [
@@ -35,10 +35,10 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/icons",
-    name: "Icons",
-    icon: "pe-7s-science",
-    component: Icons,
+    path: "/relatorios",
+    name: "Relatórios",
+    icon: "pe-7s-graph2",
+    component: Relatorios,
     layout: "/admin"
   },
   {

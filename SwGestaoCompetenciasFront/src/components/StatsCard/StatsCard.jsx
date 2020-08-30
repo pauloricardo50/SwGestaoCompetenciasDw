@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Nav,NavDropdown,MenuItem } from "react-bootstrap";
 
 export class StatsCard extends Component {
   render() {
@@ -14,8 +14,19 @@ export class StatsCard extends Component {
             </Col>
             <Col xs={7}>
               <div className="numbers">
-                <p>{this.props.statsText}</p>
-                {this.props.statsValue}
+                <Nav>
+                <NavDropdown
+                  eventKey={2}
+                  title={this.props.statsText}
+                  id="basic-nav-dropdown"
+                >
+                  <MenuItem eventKey={2.1}>{this.props.item1}</MenuItem>
+                  <MenuItem eventKey={2.2}>{this.props.item2}</MenuItem>
+                  <MenuItem eventKey={2.3}>{this.props.item3}</MenuItem>
+                  <MenuItem eventKey={2.4}>{this.props.item4}</MenuItem>
+                  <MenuItem eventKey={2.5}>{this.props.item5}</MenuItem>
+                </NavDropdown>
+                </Nav>
               </div>
             </Col>
           </Row>
