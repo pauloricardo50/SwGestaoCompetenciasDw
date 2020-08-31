@@ -244,14 +244,22 @@ var style = {
 // // // For tables
 // //
 //
-const thArray = ["ID", "Name", "Salary", "Country", "City"];
+const thArray = ["ID", "Nome", "Bolsa", "Tempo Semanal", "IDProjeto"];
 const tdArray = [
-  ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
-  ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
-  ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
-  ["4", "Philip Chaney", "$38,735", "Korea, South", "Overland Park"],
-  ["5", "Doris Greene", "$63,542", "Malawi", "Feldkirchen in Kärnten"],
-  ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
+  ["1", "Guilherme Bodart", "R$600", "20 HR", "1"],
+  ["2", "Jennifer Amaral", "R$600",  "20 HR", "1"],
+  ["3", "Gabriel Marchezi", "R$600", "20 HR", "1"],
+  ["4", "Renato Lopes", "R$600", "20 HR", "1"],
+  ["5", "Paulo Ricardo Gameplays", "R$600",  "20 HR", "1"],
+  ["6", "Guilherme Bodart", "R$600",  "20 HR", "1"]
+];
+const tdArray2 = [
+  ["1", "Guilherme Bodart", "R$600", "20 HR", "1"],
+  ["2", "Guilherme Bodart", "R$600", "20 HR", "1"],
+  ["3", "Guilherme Bodart", "R$600", "20 HR", "1"],
+  ["4", "Guilherme Bodart", "R$600", "20 HR", "1"],
+  ["5", "Guilherme Bodart", "R$600", "20 HR", "1"],
+  ["6", "Guilherme Bodart", "R$600", "20 HR", "1"],
 ];
 
 //
@@ -639,6 +647,7 @@ var legendBar = {
 module.exports = {
   style, // For notifications (App container and Notifications view)
   thArray,
+  tdArray2,
   tdArray, // For tables (TableList view)
   iconsArray, // For icons (Icons view)
   dataPie,
