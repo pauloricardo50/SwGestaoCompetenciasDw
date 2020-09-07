@@ -1,7 +1,7 @@
 import Dashboard from "views/Dashboard.jsx";
 import UserProfile from "views/UserProfile.jsx";
 import TableList from "views/TableList.jsx";
-import Typography from "views/Typography.jsx";
+import CriarProjeto from "views/CriarProjeto.jsx";
 import Relatorios from "views/Relatorios.jsx";
 import Notifications from "views/Notifications.jsx";
 
@@ -28,10 +28,10 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/typography",
-    name: "Typography",
+    path: "/criar-projeto",
+    name: "Criar Projeto",
     icon: "pe-7s-news-paper",
-    component: Typography,
+    component: CriarProjeto,
     layout: "/admin"
   },
   {

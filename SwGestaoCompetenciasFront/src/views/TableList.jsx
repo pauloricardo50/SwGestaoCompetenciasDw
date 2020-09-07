@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Grid, Row, Col, Table } from "react-bootstrap";
 import Button from "components/CustomButton/CustomButton.jsx";
 import Card from "components/Card/Card.jsx";
-import { thArray, tdArray } from "variables/Variables.jsx";
+import { thArray, tdArray,tdArray2 } from "variables/Variables.jsx";
+
 
 class ListaProjetos extends Component {
   render() {
@@ -13,8 +14,8 @@ class ListaProjetos extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title="IAmHere"
-                category="Projeto de chamada por reconhecimento facial"
+                title="Leds Skills"
+                category="Projeto de gestão de competências"
                 ctTableFullWidth
                 ctTableResponsive
                 content={
@@ -46,8 +47,8 @@ class ListaProjetos extends Component {
             <Col md={12}>
               <Card
                 plain
-                title="Striped Table with Hover"
-                category="Here is a subtitle for this table"
+                title="IaM Here"
+                category="Projeto de Chamada Por Identificação Facial"
                 ctTableFullWidth
                 ctTableResponsive
                 content={
@@ -60,7 +61,7 @@ class ListaProjetos extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {tdArray.map((prop, key) => {
+                      {tdArray2.map((prop, key) => {
                         return (
                           <tr key={key}>
                             {prop.map((prop, key) => {
