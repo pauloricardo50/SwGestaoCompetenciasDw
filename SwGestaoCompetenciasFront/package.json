@@ -15,7 +15,8 @@
     "react-router": "5.0.0",
     "react-router-dom": "5.0.0",
     "react-scripts": "^3.4.3",
-    "react-toggle": "4.0.2"
+    "react-toggle": "4.0.2",
+    "recharts": "^1.8.5"
   },
   "devDependencies": {
     "@types/googlemaps": "3.30.19",
