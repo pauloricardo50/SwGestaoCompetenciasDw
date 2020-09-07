@@ -482,24 +482,31 @@ var legendPie = {
 // Data for Line Chart
 var dataSales = {
   labels: [
-    "9:00AM",
-    "12:00AM",
-    "3:00PM",
-    "6:00PM",
-    "9:00PM",
-    "12:00PM",
-    "3:00AM",
-    "6:00AM"
+    "Jan",
+    "Fev",
+    "Mar",
+    "Abr",
+    "Mai",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Set",
+    "Out",
+    "Nov",
+    "Dec",
+
   ],
   series: [
-    [287, 385, 490, 492, 554, 586, 698, 695],
-    [67, 152, 143, 240, 287, 335, 435, 437],
-    [23, 113, 67, 108, 190, 239, 307, 308]
+    [2, 10, 15, 20, 25, 27, 28, 34, 38, 40, 45, 50],
+    [1, 5, 13, 15, 20, 23, 25, 27, 34, 37, 43, 47],
+    [2, 3, 8, 12, 20, 25, 36, 40, 45, 49, 50, 65],
+    [],
+    [1, 5, 7, 12, 15, 17, 25, 34, 36, 42, 53, 64]
   ]
 };
 var optionsSales = {
   low: 0,
-  high: 800,
+  high: 100,
   showArea: false,
   height: "245px",
   axisX: {
@@ -526,8 +533,8 @@ var responsiveSales = [
   ]
 ];
 var legendSales = {
-  names: ["Open", "Click", "Click Second Time"],
-  types: ["info", "danger", "warning"]
+  names: ["SmartPay", "NetIfes", "IamHere","","TodoDay"],
+  types: ["info", "danger", "warning","", "success"]
 };
 
 //Grafico Atividades

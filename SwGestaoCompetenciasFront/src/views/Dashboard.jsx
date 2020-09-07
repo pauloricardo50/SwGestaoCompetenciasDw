@@ -22,10 +22,12 @@ class Dashboard extends Component {
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json["names"].length; i++) {
-      var type = "fa fa-circle text-" + json["types"][i];
-      legend.push(<i className={type} key={i} />);
-      legend.push(" ");
-      legend.push(json["names"][i]);
+      if (json["names"][i] != ""){
+        var type = "fa fa-circle text-" + json["types"][i];
+        legend.push(<i className={type} key={i} />);
+        legend.push(" ");
+        legend.push(json["names"][i]);
+      }
     }
     return legend;
   }
@@ -75,11 +77,9 @@ class Dashboard extends Component {
           <Row>
             <Col md={8}>
               <Card
-                statsIcon="fa fa-history"
                 id="chartHours"
-                title="Users Behavior"
+                title="Progresso dos projetos"
                 category="24 Hours performance"
-                stats="Updated 3 minutes ago"
                 content={
                   <div className="ct-chart">
                     <ChartistGraph
