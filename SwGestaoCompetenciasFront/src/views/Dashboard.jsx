@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
+import {RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend} from "recharts";
 
 import { Card } from "components/Card/Card.jsx";
-import { StatsCard } from "components/StatsCard/StatsCard.jsx";
+import { StatsCard2 } from "components/StatsCard/StatsCard2.jsx";
 import { Tasks } from "components/Tasks/Tasks.jsx";
 import {
   dataPie,
@@ -15,7 +16,10 @@ import {
   dataBar,
   optionsBar,
   responsiveBar,
-  legendBar
+  legendBar,
+  radarData,
+  dataDashBoard,
+  legendDashBoard
 } from "variables/Variables.jsx";
 
 class Dashboard extends Component {
@@ -37,41 +41,12 @@ class Dashboard extends Component {
         <Grid fluid>
           <Row>
             <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="pe-7s-server text-warning" />}
-                statsText="Aplicativo"
-                statsValue="IAmHere"
-                statsIcon={<i className="fa fa-refresh" />}
-                statsIconText="Updated now"
+              <StatsCard2
+                // bigIcon={<i className="pe-7s-server text-warning" />}
+                statsText="Usuários ativos"
+                statsValue="25"
               />
               
-            </Col>
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="pe-7s-wallet text-success" />}
-                statsText="Revenue"
-                statsValue="$1,345"
-                statsIcon={<i className="fa fa-calendar-o" />}
-                statsIconText="Last day"
-              />
-            </Col>
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="pe-7s-graph1 text-danger" />}
-                statsText="Errors"
-                statsValue="23"
-                statsIcon={<i className="fa fa-clock-o" />}
-                statsIconText="In the last hour"
-              />
-            </Col>
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="fa fa-twitter text-info" />}
-                statsText="Followers"
-                statsValue="+45"
-                statsIcon={<i className="fa fa-refresh" />}
-                statsIconText="Updated now"
-              />
             </Col>
           </Row>
           <Row>
@@ -98,9 +73,8 @@ class Dashboard extends Component {
             <Col md={4}>
               <Card
                 statsIcon="fa fa-clock-o"
-                title="Email Statistics"
+                title="Ferramentas utilizadas"
                 category="Last Campaign Performance"
-                stats="Campaign sent 2 days ago"
                 content={
                   <div
                     id="chartPreferences"
@@ -120,40 +94,40 @@ class Dashboard extends Component {
             <Col md={6}>
               <Card
                 id="chartActivity"
-                title="2014 Sales"
-                category="All products including Taxes"
-                stats="Data information certified"
-                statsIcon="fa fa-check"
+                title="Competências"
+                category="Conhecimentos técnicos"
                 content={
                   <div className="ct-chart">
-                    <ChartistGraph
-                      data={dataBar}
-                      type="Bar"
-                      options={optionsBar}
-                      responsiveOptions={responsiveBar}
-                    />
+                    <RadarChart outerRadius={90} width={730} height={250} data={radarData}>
+                      <PolarGrid />
+                      <PolarAngleAxis dataKey="subject" />
+                      <PolarRadiusAxis angle={30} domain={[0, 150]} />
+                      <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+                      <Radar name="Lily" dataKey="B" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6} />
+                      <Legend />
+                    </RadarChart>
                   </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendBar)}</div>
                 }
               />
             </Col>
 
             <Col md={6}>
               <Card
-                title="Tasks"
-                category="Backend development"
-                stats="Updated 3 minutes ago"
-                statsIcon="fa fa-history"
-                content={
-                  <div className="table-full-width">
-                    <table className="table">
-                      <Tasks />
-                    </table>
-                  </div>
-                }
-              />
+                  statsIcon="fa fa-clock-o"
+                  title="Índice de satisfação"
+                  category="Last Campaign Performance"
+                  content={
+                    <div
+                      id="chartPreferences"
+                      className="ct-chart ct-perfect-fourth"
+                    >
+                      <ChartistGraph data={dataDashBoard} type="Pie" />
+                    </div>
+                  }
+                  legend={
+                    <div className="legend">{this.createLegend(legendPie)}</div>
+                  }
+                />
             </Col>
           </Row>
         </Grid>

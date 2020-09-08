@@ -479,10 +479,19 @@ const iconsArray = [
 //
 // Data for Pie Chart
 var dataPie = {
-  labels: ["60%", "20%", "10%","10%"],
-  series: [60, 20, 10,10]
+  labels: ["60%", "20%", "10%", ,"10%"],
+  series: [60, 20, 10, ,10]
 };
 var legendPie = {
+  names: ["Open", "Bounce", "Unsubscribe","Teste"],
+  types: ["info", "danger", "warning","success"]
+};
+
+var dataDashBoard = {
+  labels: ["60%", "20%", "10%", ,"10%"],
+  series: [60, 20, 10, ,10]
+};
+var legendDashBoard = {
   names: ["Open", "Bounce", "Unsubscribe","Teste"],
   types: ["info", "danger", "warning","success"]
 };
@@ -651,6 +660,45 @@ var legendBar = {
   types: ["info", "danger"]
 };
 
+var radarData = [
+  {
+    "subject": "Math",
+    "A": 120,
+    "B": 110,
+    "fullMark": 150
+  },
+  {
+    "subject": "Chinese",
+    "A": 98,
+    "B": 130,
+    "fullMark": 150
+  },
+  {
+    "subject": "English",
+    "A": 86,
+    "B": 130,
+    "fullMark": 150
+  },
+  {
+    "subject": "Geography",
+    "A": 99,
+    "B": 100,
+    "fullMark": 150
+  },
+  {
+    "subject": "Physics",
+    "A": 85,
+    "B": 90,
+    "fullMark": 150
+  },
+  {
+    "subject": "History",
+    "A": 65,
+    "B": 85,
+    "fullMark": 150
+  }
+]
+
 module.exports = {
   style, // For notifications (App container and Notifications view)
   thArray,
@@ -671,5 +719,8 @@ module.exports = {
   optionsAtividades,
   responsiveAtividades,
   dataLinguagens,
-  legendLinguagens
+  legendLinguagens,
+  radarData,
+  dataDashBoard,
+  legendDashBoard
 };
