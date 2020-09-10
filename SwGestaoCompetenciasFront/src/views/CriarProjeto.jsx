@@ -41,7 +41,7 @@ class CriarProjeto extends Component {
                         {
                           label: "Data final estipulada",
                           type: "date",
-                          bsClass: "form-control",
+                          bsClass: "form-control"
                         }
                       ]}
                     />
