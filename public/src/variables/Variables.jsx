@@ -558,18 +558,18 @@ var legendSales = {
 
 var graficoAtividades = {
   labels: [
-    "Janeiro",
-    "Fevereiro",
-    "Março",
-    "Abril",
-    "Maio",
-    "Junho",
-    "Julho",
-    "Agosto",
-    "Setembro",
-    "Outubro",
-    "Novembro",
-    "Dezembro"
+    "Jan",
+    "Fev",
+    "Mar",
+    "Abr",
+    "Mai",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Set",
+    "Out",
+    "Nov",
+    "Dez"
   ],
   series: [
     [26, 78, 62, 66, 98, 130, 105, 115,124,220,105,52]
@@ -661,42 +661,91 @@ var legendBar = {
 };
 
 var radarData = [
-  {
-    "subject": "Math",
-    "A": 120,
-    "B": 110,
+    {
+    "subject": "Tolerância",
+    "A": 20,
+    "B": 30,
     "fullMark": 150
   },
   {
-    "subject": "Chinese",
-    "A": 98,
-    "B": 130,
+    "subject": "Planejamento",
+    "A": 30,
+    "B": 40,
     "fullMark": 150
   },
   {
-    "subject": "English",
-    "A": 86,
-    "B": 130,
+    "subject": "Empatia",
+    "A": 40,
+    "B": 50,
+    "fullMark": 150
+  },
+  
+  {
+    "subject": "Concentração",
+    "A": 60,
+    "B": 70,
     "fullMark": 150
   },
   {
-    "subject": "Geography",
-    "A": 99,
-    "B": 100,
-    "fullMark": 150
-  },
-  {
-    "subject": "Physics",
-    "A": 85,
+    "subject": "Perfil Técnico",
+    "A": 80,
     "B": 90,
     "fullMark": 150
   },
   {
-    "subject": "History",
-    "A": 65,
-    "B": 85,
+    "subject": "Organização",
+    "A": 90,
+    "B": 100,
     "fullMark": 150
-  }
+  },
+  {
+    "subject": "Detalhismo",
+    "A": 100,
+    "B": 110,
+    "fullMark": 150
+  },
+  {
+    "subject": "Capacidade de ouvir",
+    "A": 50,
+    "B": 60,
+    "fullMark": 150
+  },
+  {
+    "subject": "Multitarefas",
+    "A": 130,
+    "B": 140,
+    "fullMark": 150
+  },
+  {
+    "subject": "Automotivação",
+    "A": 140,
+    "B": 150,
+    "fullMark": 150
+  },
+  {
+    "subject": "Proatividade",
+    "A": 150,
+    "B": 140,
+    "fullMark": 150
+  },
+  {
+    "subject": "Dinamismo",
+    "A": 140,
+    "B": 130,
+    "fullMark": 150
+  },
+   {
+    "subject": "Sociabilidade",
+    "A": 100,
+    "B": 90,
+    "fullMark": 150
+  },
+  {
+    "subject": "Relacionamento Interpessoal",
+    "A": 110,
+    "B": 100,
+    "fullMark": 150
+  },
 ]
 
 module.exports = {

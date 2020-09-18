@@ -13,7 +13,7 @@ export class StatsCard extends Component {
               </div>
             </Col>
             <Col xs={7}>
-              <div className="numbers">
+              <div className="text-center" style={{fontSize:"1.5em", width:"6.3em"}}>
                 <Nav>
                 <NavDropdown
                   eventKey={2}

@@ -14,7 +14,7 @@ class Login extends Component {
     return(
       <Grid fluid style={{}} >
         <Row style={{}}>
-        <Col md={5} xs={5} style={{ borderTop:"solid", borderBottom:"solid", borderLeft:"solid", height:"100vh",backgroundColor:"#CCFFCC",}}>
+        <Col md={5} xs={5} style={{ borderTop:"solid", borderBottom:"solid", borderLeft:"solid", height:"100vh",backgroundColor:"#48B216",}}>
           <p style={{fontWeight:500, fontSize:"2.73em", textAlign : "center", marginTop: "1.5em" }}>Leds Skills</p>
           <FormInputs
             
@@ -42,7 +42,7 @@ class Login extends Component {
               }
             ]}
           />
-          <Button href="/" bsStyle="info" fill type="submit" pullRight style={{marginTop:"7em", marginRight:"8.5vw"}}>
+          <Button href="/" bsStyle="info" fill type="submit" pullRight style={{marginTop:"7em", marginRight:"8.5vw",backgroundColor:"#1648B2"}}>
             Conectar
           </Button>
         </Col>
@@ -87,7 +87,7 @@ class Login extends Component {
             }
           ]}
         />
-        <Button href="/" bsStyle="info" fill type="submit" pullRight style={{marginTop:"1.27em", marginRight:"11vw"}}>
+        <Button href="/" bsStyle="danger" fill type="submit" pullRight style={{marginTop:"1.27em", marginRight:"11vw", backgroundColor:"#B21648"}}>
           Criar Conta
         </Button>
       </Col>

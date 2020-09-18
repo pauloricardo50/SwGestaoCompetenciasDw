@@ -3,7 +3,6 @@ import UserProfile from "views/UserProfile.jsx";
 import TableList from "views/TableList.jsx";
 import CriarProjeto from "views/CriarProjeto.jsx";
 import Relatorios from "views/Relatorios.jsx";
-import Notifications from "views/Notifications.jsx";
 
 const dashboardRoutes = [
   {
@@ -39,13 +38,6 @@ const dashboardRoutes = [
     name: "Relatórios",
     icon: "pe-7s-graph2",
     component: Relatorios,
-    layout: "/admin"
-  },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    icon: "pe-7s-bell",
-    component: Notifications,
     layout: "/admin"
   }
 ];

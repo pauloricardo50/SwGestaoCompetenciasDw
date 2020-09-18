@@ -74,7 +74,6 @@ class Dashboard extends Component {
               <Card
                 statsIcon="fa fa-clock-o"
                 title="Ferramentas utilizadas"
-                category="Last Campaign Performance"
                 content={
                   <div
                     id="chartPreferences"
@@ -97,8 +96,7 @@ class Dashboard extends Component {
                 title="Competências"
                 category="Conhecimentos técnicos"
                 content={
-                  <div className="ct-chart">
-                    <RadarChart outerRadius={90} width={730} height={250} data={radarData}>
+                    <RadarChart outerRadius={150} width={520} height={400} data={radarData}>
                       <PolarGrid />
                       <PolarAngleAxis dataKey="subject" />
                       <PolarRadiusAxis angle={30} domain={[0, 150]} />
@@ -106,7 +104,6 @@ class Dashboard extends Component {
                       <Radar name="Lily" dataKey="B" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6} />
                       <Legend />
                     </RadarChart>
-                  </div>
                 }
               />
             </Col>
@@ -115,14 +112,9 @@ class Dashboard extends Component {
               <Card
                   statsIcon="fa fa-clock-o"
                   title="Índice de satisfação"
-                  category="Last Campaign Performance"
                   content={
-                    <div
-                      id="chartPreferences"
-                      className="ct-chart ct-perfect-fourth"
-                    >
                       <ChartistGraph data={dataDashBoard} type="Pie" />
-                    </div>
+                 
                   }
                   legend={
                     <div className="legend">{this.createLegend(legendPie)}</div>
