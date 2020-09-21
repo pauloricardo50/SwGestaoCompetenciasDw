@@ -14,7 +14,7 @@ class Login extends Component {
     return(
       <Grid fluid style={{}} >
         <Row style={{}}>
-        <Col md={5} xs={5} style={{ borderTop:"solid", borderBottom:"solid", borderLeft:"solid", height:"100vh",backgroundColor:"#48B216",}}>
+        <Col md={5} xs={5} style={{ borderBottom:"solid", height:"100vh",backgroundColor:"#48B216",}}>
           <p style={{fontWeight:500, fontSize:"2.73em", textAlign : "center", marginTop: "1.5em" }}>Leds Skills</p>
           <FormInputs
             
@@ -42,12 +42,12 @@ class Login extends Component {
               }
             ]}
           />
-          <Button href="/" bsStyle="info" fill type="submit" pullRight style={{marginTop:"7em", marginRight:"8.5vw",backgroundColor:"#1648B2"}}>
+          <Button href="/" bsStyle="danger" fill type="submit" pullRight style={{marginTop:"7em", marginRight:"8.5vw",backgroundColor:"#B21648"}}>
             Conectar
           </Button>
         </Col>
         
-      <Col  md={7} xs={7} style={{border:"solid", height:"100vh",backgroundColor:"white",}}>
+      <Col  md={7} xs={7} style={{ borderLeft:"solid", borderBottom:"solid", height:"100vh",backgroundColor:"white",}}>
         <p style={{fontWeight:500, fontSize:"2.73em", textAlign : "center", marginTop: "1.5em" }}>Criação de Conta</p>
         <FormInputs
 
@@ -87,7 +87,7 @@ class Login extends Component {
             }
           ]}
         />
-        <Button href="/" bsStyle="danger" fill type="submit" pullRight style={{marginTop:"1.27em", marginRight:"11vw", backgroundColor:"#B21648"}}>
+        <Button href="/" bsStyle="info" fill type="submit" pullRight style={{marginTop:"1.27em", marginRight:"11vw", backgroundColor:"#1648B2"}}>
           Criar Conta
         </Button>
       </Col>
