@@ -4,12 +4,57 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
+import { connect } from 'react-redux';
 
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
+import { criarUsuario, autenticarUsuario} from '../store/actions/usuarios/usuario'
 
+const initialState = {
+  emailCadastro: '',
+  name: '',
+  senhaCadastro: '',
+  emailLogin: '',
+  senhaLogin: '',
+}
 
 class Login extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = initialState
+  }
+
+  onChangeName = (name) => {
+    this.setState({
+        name
+    })
+  }
+
+  onChangeEmailCadastro = (emailCadastro) => {
+    this.setState({
+        emailCadastro
+    })
+  }
+
+  onChangeEmailLogin = (emailLogin) => {
+    this.setState({
+      emailLogin
+    })
+  }
+
+  onChangeSenhaCadastro = (senhaCadastro) => {
+    this.setState({
+      senhaCadastro
+   })
+  }
+
+  onChangeSenhaLogin = (senhaLogin) => {
+    this.setState({
+      senhaLogin
+    })
+  }
+
   render() {
     return(
       <Grid fluid style={{}} >
@@ -21,11 +66,12 @@ class Login extends Component {
             ncols={["col-md-10"]}
             properties={[
               {
-                label: "Usuário",
+                label: "E-mail",
                 type: "text",
                 bsClass: "form-control",
-                placeholder: "Usuário",
-                defaultValue: ""
+                placeholder: "E-mail",
+                defaultValue: "",
+                onChange: {value: this.onChangeEmailLogin}
                                       }
             ]}
                       
@@ -38,11 +84,17 @@ class Login extends Component {
                 type: "password",
                 bsClass: "form-control",
                 placeholder: "Senha",
-                defaultValue: ""
+                defaultValue: "",
+                onChange: {value: this.onChangeSenhaLogin}
               }
             ]}
           />
-          <Button href="/" bsStyle="danger" fill type="submit" pullRight style={{marginTop:"7em", marginRight:"8.5vw",backgroundColor:"#B21648"}}>
+          <Button bsStyle="danger" fill type="submit" 
+          pullRight style={{marginTop:"7em", marginRight:"8.5vw",backgroundColor:"#B21648"}}
+          onClick = {() => {
+            this.props.autenticarUsuario({ email: this.props.email, password: this.state.senha})
+          }}
+          >
             Conectar
           </Button>
         </Col>
@@ -54,11 +106,12 @@ class Login extends Component {
           ncols={["col-md-10"]}
           properties={[
             {
-              label: "Usuário",
+              label: "Nome",
               type: "text",
               bsClass: "form-control",
-              placeholder: "Usuário",
-              defaultValue: ""
+              placeholder: "Nome",
+              defaultValue: "",
+              onChange: {value: this.onChangeName}
                                     }
           ]}
                     
@@ -71,7 +124,8 @@ class Login extends Component {
               type: "email",
               bsClass: "form-control",
               placeholder: "E-mail",
-              defaultValue: ""
+              defaultValue: "",
+              onChange: this.onChangeEmailCadastro
             }
           ]}
         />
@@ -83,22 +137,34 @@ class Login extends Component {
               type: "password",
               bsClass: "form-control",
               placeholder: "Senha",
-              defaultValue: ""
+              defaultValue: "",
+              onChange: {value: this.onChangeSenhaCadastro}
             }
           ]}
         />
-        <Button href="/" bsStyle="info" fill type="submit" pullRight style={{marginTop:"1.27em", marginRight:"11vw", backgroundColor:"#1648B2"}}>
+        <Button bsStyle="info" fill type="submit" 
+                pullRight style={{marginTop:"1.27em", marginRight:"11vw", backgroundColor:"#1648B2"}}
+                onClick = {() => {
+                  this.props.criarUsuario({name: this.state.name, email: this.state.email, password: this.state.senha})
+                }} >
           Criar Conta
         </Button>
       </Col>
-      </Row>
-      
-
-        
+      </Row>        
       </Grid>
       
     )
     }
 }
-
-export default Login;
+const mapStateToProps = ({ user }) => {
+  return {
+      user,
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+      criarUsuario: user => dispatch(criarUsuario(user)),
+      autenticarUsuario: user => dispatch(autenticarUsuario(user)),
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
