@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ecfb6f5a.chunk.css",
+    "main.js": "/static/js/main.1766eb90.chunk.js",
+    "main.js.map": "/static/js/main.1766eb90.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.07bd00ab.js",
+    "runtime-main.js.map": "/static/js/runtime-main.07bd00ab.js.map",
+    "static/css/2.daa9285a.chunk.css": "/static/css/2.daa9285a.chunk.css",
+    "static/js/2.6aa35138.chunk.js": "/static/js/2.6aa35138.chunk.js",
+    "static/js/2.6aa35138.chunk.js.map": "/static/js/2.6aa35138.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.a1b2f21404cc261f6656aedad4d38aeb.js": "/precache-manifest.a1b2f21404cc261f6656aedad4d38aeb.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.daa9285a.chunk.css.map": "/static/css/2.daa9285a.chunk.css.map",
+    "static/css/main.ecfb6f5a.chunk.css.map": "/static/css/main.ecfb6f5a.chunk.css.map",
+    "static/js/2.6aa35138.chunk.js.LICENSE.txt": "/static/js/2.6aa35138.chunk.js.LICENSE.txt",
+    "static/media/pe-icon-7-stroke.css": "/static/media/Pe-icon-7-stroke.dedf2698.svg",
+    "static/media/face-3.jpg": "/static/media/face-3.ce7a6b79.jpg",
+    "static/media/bootstrap.min.css": "/static/media/glyphicons-halflings-regular.fa277232.woff",
+    "static/media/sidebar-3.jpg": "/static/media/sidebar-3.7bc259fd.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.07bd00ab.js",
+    "static/css/2.daa9285a.chunk.css",
+    "static/js/2.6aa35138.chunk.js",
+    "static/css/main.ecfb6f5a.chunk.css",
+    "static/js/main.1766eb90.chunk.js"
+  ]
+}
