@@ -19,9 +19,9 @@ export const autenticarUsuario = user => {
             email,
             password
           }})
-            .then(async response => {
+            .then(response => {
                 user = response.data
-                await dispatch(armazenaInfoUsuario(user))                
+                dispatch(armazenaInfoUsuario(user))                
             })
             .catch(req => {
                 const error = req.message.split(' ')
