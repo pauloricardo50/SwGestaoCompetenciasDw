@@ -26,7 +26,7 @@ class Dashboard extends Component {
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json["names"].length; i++) {
-      if (json["names"][i] != ""){
+      if (json["names"][i] !== ""){
         var type = "fa fa-circle text-" + json["types"][i];
         legend.push(<i className={type} key={i} />);
         legend.push(" ");

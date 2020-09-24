@@ -26,7 +26,7 @@ ReactDOM.render(
           <Route exact path="/login-admin">
             <Login/>
           </Route>
-          <Redirect from="/" to="/admin/dashboard" />
+          <Redirect from="/" to="/login-admin" />
         </Switch>
       </BrowserRouter>
     </PersistGate>

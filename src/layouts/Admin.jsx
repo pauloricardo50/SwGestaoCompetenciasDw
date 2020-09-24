@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
+import { connect } from 'react-redux';
 
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import Footer from "components/Footer/Footer";
@@ -18,7 +19,8 @@ class Admin extends Component {
       image: image,
       color: "black",
       hasImage: true,
-      fixedClasses: "dropdown show-dropdown open"
+      fixedClasses: "dropdown show-dropdown open",
+      logado: this.props.usuario.name
     };
   }
  
@@ -103,23 +105,39 @@ class Admin extends Component {
       this.refs.mainPanel.scrollTop = 0;
     }
   }
-  render() {
-    return (
-      <div className="wrapper">
-        <Sidebar {...this.props} routes={routes} image={this.state.image}
-        color={this.state.color}
-        hasImage={this.state.hasImage}/>
-        <div id="main-panel" className="main-panel" ref="mainPanel">
-          <AdminNavbar
-            {...this.props}
-            brandText={this.getBrandText(this.props.location.pathname)}
-          />
-          <Switch>{this.getRoutes(routes)}</Switch>
-          <Footer />
+  render(props) {
+    alert(JSON.stringify(this.props.usuario))
+    if(!this.state.logado){
+      return <Redirect to="/login-admin"/>
+    }
+    else{
+      return (
+
+        <div className="wrapper">
+          <Sidebar {...this.props} routes={routes} image={this.state.image}
+          color={this.state.color}
+          hasImage={this.state.hasImage}/>
+          <div id="main-panel" className="main-panel" ref="mainPanel">
+            <AdminNavbar
+              {...this.props}
+              brandText={this.getBrandText(this.props.location.pathname)}
+            />
+            <Switch>{this.getRoutes(routes)}</Switch>
+            <Footer />
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
-export default Admin;
+const mapStateToProps = ({ usuario }) => {
+  return {
+      usuario,
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Admin)

@@ -14,7 +14,7 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
 
         case USER_LOGGED_IN:
-            let { email, name, _id } = action.payload;
+            let { email, name, _id } = action.payload.user;
             let token = action.payload.token
 
             return {
