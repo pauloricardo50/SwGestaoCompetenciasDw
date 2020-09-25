@@ -69,7 +69,6 @@ class Login extends Component {
   }
 
   render(props) {
-    const {email} = this.state
     if(this.props.usuario.name){
       return <Redirect to="/admin/dashboard"/>
     }
