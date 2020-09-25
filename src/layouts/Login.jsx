@@ -113,7 +113,7 @@ class Login extends Component {
               />
               <Button bsStyle="danger" fill type="submit" 
               pullRight style={{marginTop:"7em", marginRight:"8.5vw",backgroundColor:"#B21648"}}
-              onClick = {async () => {
+              onClick = { async () => {
                 await this.props.autenticarUsuario({email: this.state.emailLogin, password: this.state.senhaLogin})          
                 await this.onChangeLogado()
               }}
@@ -170,9 +170,11 @@ class Login extends Component {
             />
             <Button bsStyle="info" fill type="submit" 
                     pullRight style={{marginTop:"1.27em", marginRight:"11vw", backgroundColor:"#1648B2"}}
-                    onClick = {() => {
+                    onClick = {async () => {
                       this.props.criarUsuario({name: this.state.name, email: this.state.emailCadastro, password: this.state.senhaCadastro})
+                      await this.onChangeLogado()
                     }} >
+                      
               Criar Conta
             </Button>
           </Col>

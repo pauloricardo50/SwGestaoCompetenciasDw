@@ -106,7 +106,6 @@ class Admin extends Component {
     }
   }
   render(props) {
-    alert(JSON.stringify(this.props.usuario))
     if(!this.state.logado){
       return <Redirect to="/login-admin"/>
     }

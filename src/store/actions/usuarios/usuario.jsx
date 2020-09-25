@@ -33,7 +33,7 @@ export const autenticarUsuario = user => {
                     alert("Senha inválida")
                 }
                 else{
-                    alert("Erro desconhecido, tente novamente")
+                    alert("Algo deu errado, tente novamente")
                 }
             })
     }
@@ -50,8 +50,8 @@ export const criarUsuario = user => {
 
     return (dispatch) => {
         const { name, email, password } = user
-        
-        axios.post("http://localhost:3001", null,  { params: {
+        alert(JSON.stringify(user))
+        axios.post("http://localhost:3001/auth/register", null,  { params: {
             name,
             email,
             password
@@ -60,8 +60,25 @@ export const criarUsuario = user => {
                 user = response.data
                 dispatch(armazenaInfoUsuario(user))
             })
-            .catch(error => {
-                return "Problema ao criar conta, tente novamente"
+            .catch(req => {
+                alert(req)
+                const error = req.message.split(' ')
+                if (error[error.length - 1]=="404"){
+                    alert("Usuário já cadastrado")
+                    
+                }
+                else if (error[error.length - 1]=="403"){
+                    alert("Campo Senha vazio")
+                }
+                else if (error[error.length - 1]=="402"){
+                    alert("Campo Nome vazio")
+                }
+                else if (error[error.length - 1]=="401"){
+                    alert("Campo E-Mail vazio")
+                }
+                else{
+                    alert("Algo deu errado, tente novamente")
+                }
             })
     }
 }
