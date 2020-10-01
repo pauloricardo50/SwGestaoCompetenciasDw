@@ -1,9 +1,8 @@
 import { USER_LOGGED_IN, USER_LOGGED_OUT } from '../actionsTypes'
-import React, { Component } from "react";
 
 import axios from 'axios'
-import { Route, Switch, BrowserRouter, Link } from "react-router-dom";
-import Admin from "../../../layouts/Admin"
+
+import { alertout, alertin } from '../alertas/alertas'
 
 export const logout = () => {
     return {
@@ -26,14 +25,22 @@ export const autenticarUsuario = user => {
             .catch(req => {
                 const error = req.message.split(' ')
                 if (error[error.length - 1]=="404"){
-                    alert("Usuário não encontrado")
-                    
+                    dispatch(alertin({open: false,
+                        alertTitle: 'Erro',
+                        severity: 'error',
+                        texto: 'E-mail incorreto, verifique e tente novamente'}))                    
                 }
                 else if(error[error.length - 1]=="401"){
-                    alert("Senha inválida")
+                    dispatch(alertin({open: false,
+                        alertTitle: 'Erro',
+                        severity: 'error',
+                        texto: 'Senha incorreta, verifique e tenta novamente'}))
                 }
                 else{
-                    alert("Algo deu errado, tente novamente")
+                    dispatch(alertin({open: false,
+                        alertTitle: 'Desconhecido',
+                        severity: 'warning',
+                        texto: 'Falha no login, tente novamente mais tarde'}))
                 }
             })
     }
@@ -56,26 +63,40 @@ export const criarUsuario = user => {
             password
           }})
             .then(response => {
-                user = response.data
-                dispatch(armazenaInfoUsuario(user))
+                alert("Usuário cadastrado")
             })
             .catch(req => {
                 const error = req.message.split(' ')
                 if (error[error.length - 1]=="404"){
-                    alert("Usuário já cadastrado")
+                    dispatch(alertin({open: false,
+                        alertTitle: 'Error',
+                        severity: 'error',
+                        texto: 'Este e-mail já está sendo utilziado, favor use outro'}))
                     
                 }
                 else if (error[error.length - 1]=="403"){
-                    alert("Campo Senha vazio")
+                    dispatch(alertin({open: false,
+                        alertTitle: 'Campo nulo',
+                        severity: 'error',
+                        texto: 'O campo Senha está nulo, favor preencher a senha'}))
                 }
                 else if (error[error.length - 1]=="402"){
-                    alert("Campo Nome vazio")
+                    dispatch(alertin({open: false,
+                        alertTitle: 'Campo nulo',
+                        severity: 'error',
+                        texto: 'O campo Nome está nulo, favor preencher o nome'}))
                 }
                 else if (error[error.length - 1]=="401"){
-                    alert("Campo E-Mail vazio")
+                    dispatch(alertin({open: false,
+                        alertTitle: 'Campo nulo',
+                        severity: 'error',
+                        texto: 'O campo E-mail está nulo, favor preencher o e-mail'}))
                 }
                 else{
-                    alert("Algo deu errado, tente novamente")
+                    dispatch(alertin({open: false,
+                        alertTitle: 'Desconhecido',
+                        severity: 'warning',
+                        texto: 'Falha no cadastro, tente novamente mais tarde'}))
                 }
             })
     }

@@ -10,10 +10,12 @@ import {
 import Admin from "./Admin"
 import { Route, Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
+import Alerta from '../components/Alert/Alert'
 
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
-import { criarUsuario, autenticarUsuario} from '../store/actions/usuarios/usuario'
+import { criarUsuario, autenticarUsuario } from '../store/actions/usuarios/usuario'
+import { alertout } from '../store/actions/alertas/alertas'
 
 const initialState = {
   emailCadastro: '',
@@ -70,14 +72,17 @@ class Login extends Component {
 
   render(props) {
     if(this.props.usuario.name){
+      this.props.alertout()
       return <Redirect to="/admin/dashboard"/>
     }
     if(this.state.logado){
+      this.props.alertout()
       return <Redirect to="/admin/dashboard"/>
     }
     else{
         return(
           <Grid fluid style={{}} >
+            <Alerta open= {true} alertTitle= {this.props.alerta.alertTitle} severity= {this.props.alerta.severity} texto= {this.props.alerta.texto}/>
             <Row style={{}}>
             <Col md={5} xs={5} style={{ borderBottom:"solid", height:"100vh",backgroundColor:"#48B216",}}>
               <p style={{fontWeight:500, fontSize:"2.73em", textAlign : "center", marginTop: "1.5em" }}>Leds Skills</p>
@@ -118,7 +123,7 @@ class Login extends Component {
                 await this.onChangeLogado()
               }}
               >
-                Conectar
+                Conectar 
               </Button>
             </Col>
             
@@ -172,7 +177,6 @@ class Login extends Component {
                     pullRight style={{marginTop:"1.27em", marginRight:"11vw", backgroundColor:"#1648B2"}}
                     onClick = {async () => {
                       this.props.criarUsuario({name: this.state.name, email: this.state.emailCadastro, password: this.state.senhaCadastro})
-                      await this.onChangeLogado()
                     }} >
                       
               Criar Conta
@@ -185,15 +189,17 @@ class Login extends Component {
       }
     }
 }
-const mapStateToProps = ({ usuario }) => {
+const mapStateToProps = ({ usuario, alerta }) => {
   return {
       usuario,
+      alerta
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
       criarUsuario: usuario => dispatch(criarUsuario(usuario)),
       autenticarUsuario: usuario => dispatch(autenticarUsuario(usuario)),
+      alertout: () => dispatch(alertout()),
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

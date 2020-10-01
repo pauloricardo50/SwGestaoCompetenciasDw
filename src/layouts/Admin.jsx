@@ -7,7 +7,7 @@ import Footer from "components/Footer/Footer";
 import Sidebar from "components/Sidebar/Sidebar";
 
 import { style } from "variables/Variables.jsx";
-
+import { alertout } from '../store/actions/alertas/alertas'
 import routes from "routes.js";
 
 import image from "assets/img/sidebar-3.jpg";
@@ -107,6 +107,7 @@ class Admin extends Component {
   }
   render(props) {
     if(!this.state.logado){
+      this.props.alertout()
       return <Redirect to="/login-admin"/>
     }
     else{
@@ -137,6 +138,7 @@ const mapStateToProps = ({ usuario }) => {
 }
 const mapDispatchToProps = dispatch => {
   return {
+    alertout: () => dispatch(alertout()),
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Admin)
