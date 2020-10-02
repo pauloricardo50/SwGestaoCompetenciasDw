@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { Grid } from "react-bootstrap";
+import { connect } from 'react-redux';
+
+import { Grid, Button } from "react-bootstrap";
+import { criarProjeto } from '../../store/actions/projetos/projeto'
 
 class Footer extends Component {
   render() {
@@ -16,10 +19,31 @@ class Footer extends Component {
             </a>
             , Trabalho de Desenvolvimento Web.
           </p>
+          <Button onClick = {() =>{
+            var projeto = {
+              'title':"TESTE1",
+              'about':"TESTE1",
+              'team':[],
+              'tasks':[],
+              'endedAt':'2020-10-02T19:00:38.383Z',
+            }
+            this.props.criarProjeto(projeto)
+
+          }} >TESTE</Button>
         </Grid>
       </footer>
     );
   }
 }
 
-export default Footer;
+const mapStateToProps = ({ usuario }) => {
+  return {
+      usuario,
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    criarProjeto: (projeto) => dispatch(criarProjeto(projeto)),
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Footer)

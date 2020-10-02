@@ -7,6 +7,7 @@ const initialState = {
     name: '',
     token: '',
     _id: '',
+    occupation: 'Estudante',
 }
 
 const reducer = (state = initialState, action) => {

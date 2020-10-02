@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import {Row} from 'react-bootstrap'
 export class UserCard extends Component {
   render() {
     return (
@@ -15,14 +15,16 @@ export class UserCard extends Component {
                 src={this.props.avatar}
                 alt="..."
               />
-              <h4 className="title">
+              <h4 className="title" style={{fontSize:"2.3em"}}>
                 {this.props.name}
                 <br />
-                <small>{this.props.userName}</small>
+                <small style={{fontSize:"0.6em"}}>{this.props.userName}</small>
               </h4>
             </a>
           </div>
-          <p className="description text-center">{this.props.description}</p>
+          <div className="image" style={{marginTop:"2em", marginBottom:"-1em"}}>
+            <img src={this.props.bgImage2} alt="..." />
+          </div>
         </div>
         <hr />
         <div className="text-center">{this.props.socials}</div>

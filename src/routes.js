@@ -13,8 +13,8 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/user",
-    name: "User Profile",
+    path: "/task",
+    name: "Criar Task",
     icon: "pe-7s-user",
     component: UserProfile,
     layout: "/admin"

@@ -129,7 +129,7 @@ class Admin extends Component {
       );
     }
   }
-}
+ }
 
 const mapStateToProps = ({ usuario }) => {
   return {
