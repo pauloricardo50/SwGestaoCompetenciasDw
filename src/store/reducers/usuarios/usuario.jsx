@@ -1,5 +1,6 @@
 import { USER_LOGGED_IN, 
          USER_LOGGED_OUT,
+         GET_USUARIOS
 } from '../../actions/actionsTypes'
 
 const initialState = {
@@ -8,6 +9,7 @@ const initialState = {
     token: '',
     _id: '',
     occupation: 'Estudante',
+    getUsuarios: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +26,13 @@ const reducer = (state = initialState, action) => {
 
         case USER_LOGGED_OUT:
             return initialState
+
+        case GET_USUARIOS:
+            let getUsuarios = action.payload
+            return {
+                
+                ...state, getUsuarios
+            }
         
         default:
             return state

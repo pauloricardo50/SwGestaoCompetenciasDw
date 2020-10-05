@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
+import { Row }  from 'react-bootstrap'
 
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import Footer from "components/Footer/Footer";
@@ -8,7 +9,9 @@ import Sidebar from "components/Sidebar/Sidebar";
 
 import { style } from "variables/Variables.jsx";
 import { alertout } from '../store/actions/alertas/alertas'
+import { getUsuarios } from '../store/actions/usuarios/usuario'
 import routes from "routes.js";
+import Alerta from '../components/Alert/Alert'
 
 import image from "assets/img/sidebar-3.jpg";
 
@@ -72,6 +75,8 @@ class Admin extends Component {
     }
   };
   componentDidMount() {
+    this.props.getUsuarios()
+
     var color = Math.floor(Math.random() * 4 + 1);
     var level;
     switch (color) {
@@ -106,6 +111,7 @@ class Admin extends Component {
     }
   }
   render(props) {
+    
     if(!this.state.logado){
       this.props.alertout()
       return <Redirect to="/login-admin"/>
@@ -118,6 +124,9 @@ class Admin extends Component {
           color={this.state.color}
           hasImage={this.state.hasImage}/>
           <div id="main-panel" className="main-panel" ref="mainPanel">
+            <Row style={{width:"95%"}}>
+              <Alerta open= {true} alertTitle= {this.props.alerta.alertTitle} severity= {this.props.alerta.severity} texto= {this.props.alerta.texto}/>
+            </Row>
             <AdminNavbar
               {...this.props}
               brandText={this.getBrandText(this.props.location.pathname)}
@@ -131,14 +140,17 @@ class Admin extends Component {
   }
  }
 
-const mapStateToProps = ({ usuario }) => {
+const mapStateToProps = ({ usuario, alerta}) => {
   return {
       usuario,
+      alerta
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     alertout: () => dispatch(alertout()),
+    getUsuarios: () => dispatch(getUsuarios()),
+
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Admin)

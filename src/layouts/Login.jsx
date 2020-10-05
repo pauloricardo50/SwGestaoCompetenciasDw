@@ -3,12 +3,8 @@ import {
   Grid,
   Row,
   Col,
-  FormGroup,
-  ControlLabel,
-  FormControl
 } from "react-bootstrap";
-import Admin from "./Admin"
-import { Route, Redirect } from "react-router-dom";
+import {  Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
 import Alerta from '../components/Alert/Alert'
 
@@ -98,6 +94,8 @@ class Login extends Component {
                     placeholder: "E-mail",
                     defaultValue: "",
                     onChange: this.onChangeEmailLogin,                
+                    style:{marginLeft:"3.5em"},
+                    ControlLabel: {style:{marginLeft:"3.5em"}}  
                   }
                 ]}
                           
@@ -112,7 +110,9 @@ class Login extends Component {
                     bsClass: "form-control",
                     placeholder: "Senha",
                     defaultValue: "",
-                    onChange: this.onChangeSenhaLogin
+                    onChange: this.onChangeSenhaLogin,
+                    style:{marginLeft:"3.5em"},
+                  ControlLabel: {style:{marginLeft:"3.5em"}}
                   }
                 ]}
               />
@@ -127,10 +127,10 @@ class Login extends Component {
               </Button>
             </Col>
             
-          <Col  md={7} xs={7} style={{ borderLeft:"solid", borderBottom:"solid", height:"100vh",backgroundColor:"white",}}>
+          <Col md={7} xs={7} style={{ borderLeft:"solid", borderBottom:"solid", height:"100vh",backgroundColor:"white",}}>
             <p style={{fontWeight:500, fontSize:"2.73em", textAlign : "center", marginTop: "1.5em" }}>Criação de Conta</p>
             <FormInputs
-
+              style={{margin:100}}
               ncols={["col-md-10"]}
               properties={[
                 {
@@ -140,7 +140,9 @@ class Login extends Component {
                   bsClass: "form-control",
                   placeholder: "Nome",
                   defaultValue: "",
-                  onChange: this.onChangeName
+                  onChange: this.onChangeName,
+                  style:{marginLeft:"4em"},
+                  ControlLabel: {style:{marginLeft:"4em"}}
               }
               ]}
                         
@@ -155,7 +157,9 @@ class Login extends Component {
                   bsClass: "form-control",
                   placeholder: "E-mail",
                   defaultValue: "",
-                  onChange: this.onChangeEmailCadastro
+                  onChange: this.onChangeEmailCadastro,
+                  style:{marginLeft:"4em"},
+                  ControlLabel: {style:{marginLeft:"4em"}}
                 }
               ]}
             />
@@ -169,12 +173,14 @@ class Login extends Component {
                   bsClass: "form-control",
                   placeholder: "Senha",
                   defaultValue: "",
-                  onChange: this.onChangeSenhaCadastro
+                  onChange: this.onChangeSenhaCadastro,
+                  style:{marginLeft:"4em"},
+                  ControlLabel: {style:{marginLeft:"4em"}}
                 }
               ]}
             />
             <Button bsStyle="info" fill type="submit" 
-                    pullRight style={{marginTop:"1.27em", marginRight:"11vw", backgroundColor:"#1648B2"}}
+                    pullRight style={{marginTop:"1.27em", marginRight:"7vw", backgroundColor:"#1648B2"}}
                     onClick = {async () => {
                       this.props.criarUsuario({name: this.state.name, email: this.state.emailCadastro, password: this.state.senhaCadastro})
                     }} >

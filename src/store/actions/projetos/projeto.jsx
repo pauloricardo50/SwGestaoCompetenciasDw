@@ -2,7 +2,7 @@ import { USER_LOGGED_IN, USER_LOGGED_OUT } from '../actionsTypes'
 
 import axios from 'axios'
 
-import { alertout, alertin } from '../alertas/alertas'
+import { alertin } from '../alertas/alertas'
 
 export const logout = () => {
     return {
@@ -13,22 +13,35 @@ export const logout = () => {
 
 export const criarProjeto = projeto => {
     return (dispatch, getState) => {
-      const { title, about, team, tasks, objectives } = projeto
+      const { title, about, team, tasks, createdAt, endedAt } = projeto
       const token = 'Bearer ' + getState().usuario.token
+      alert(JSON.stringify(projeto))
       axios.post("http://localhost:3001/projects", null, { params: {
             title,
             about,
             team,
             tasks,
-            objectives,
+            createdAt,
+            endedAt,
             token
           }})
             .then(response => {
-                projeto = response.data
-                alert(JSON.stringify(projeto))
+                if(projeto.title === '' || projeto.about === '' || projeto.endedAt ===''){
+                    dispatch(alertin({open: true,
+                        alertTitle: 'Desconhecido',
+                        severity: 'warning',
+                        texto: 'Alguma coisa aconteceu, tente novamente mais tarde'}))
+                }
+                else{
+                    projeto = response.data
+                    alert(JSON.stringify(projeto))
+                }
             })
             .catch(req => {
-                alert(JSON.stringify(req))
+                dispatch(alertin({open: false,
+                    alertTitle: 'Desconhecido',
+                    severity: 'warning',
+                    texto: 'Alguma coisa aconteceu, tente novamente mais tarde'})) 
             })
         
     }

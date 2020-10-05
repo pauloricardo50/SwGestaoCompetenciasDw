@@ -25,6 +25,7 @@ class Footer extends Component {
               'about':"TESTE1",
               'team':[],
               'tasks':[],
+              'createdAt':'2020-10-03T19:00:38.383Z',
               'endedAt':'2020-10-02T19:00:38.383Z',
             }
             this.props.criarProjeto(projeto)

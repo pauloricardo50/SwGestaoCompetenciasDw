@@ -30,7 +30,7 @@ class UserProfile extends Component {
                 content={
                   <form>
                     <FormInputs
-                      ncols={["col-md-5", "col-md-3", "col-md-4"]}
+                      ncols={["col-md-4", "col-md-4", "col-md-4"]}
                       properties={[
                         {
                           label: "Nome da Task",
@@ -67,6 +67,15 @@ class UserProfile extends Component {
                         }
                       ]}
                     />
+                    
+                    
+                    <FormGroup controlId="formControlsSelect">
+                      <ControlLabel>Projeto</ControlLabel>
+                      <FormControl componentClass="select" placeholder="projeto">
+                        <option value="select">select</option>
+                        <option value="other">...</option>
+                      </FormControl>
+                    </FormGroup>   
                     <FormInputs
                       ncols={["col-md-12"]}
                       properties={[

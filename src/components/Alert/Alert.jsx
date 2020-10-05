@@ -54,7 +54,7 @@ class Alerta extends Component {
   render(props) {
     return (
         <Grid>
-            <Row>
+          <Row style={{width:"95%"}}>
           <Collapse in={this.props.alerta.open}>
             
             <Alert severity={this.props.severity}  action={

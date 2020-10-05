@@ -1,8 +1,8 @@
-import { USER_LOGGED_IN, USER_LOGGED_OUT } from '../actionsTypes'
+import { USER_LOGGED_IN, USER_LOGGED_OUT, GET_USUARIOS } from '../actionsTypes'
 
 import axios from 'axios'
 
-import { alertout, alertin } from '../alertas/alertas'
+import { alertin } from '../alertas/alertas'
 
 export const logout = () => {
     return {
@@ -25,19 +25,19 @@ export const autenticarUsuario = user => {
             .catch(req => {
                 const error = req.message.split(' ')
                 if (error[error.length - 1]=="404"){
-                    dispatch(alertin({open: false,
+                    dispatch(alertin({open: true,
                         alertTitle: 'Erro',
                         severity: 'error',
                         texto: 'E-mail incorreto, verifique e tente novamente'}))                    
                 }
                 else if(error[error.length - 1]=="401"){
-                    dispatch(alertin({open: false,
+                    dispatch(alertin({open: true,
                         alertTitle: 'Erro',
                         severity: 'error',
                         texto: 'Senha incorreta, verifique e tenta novamente'}))
                 }
                 else{
-                    dispatch(alertin({open: false,
+                    dispatch(alertin({open: true,
                         alertTitle: 'Desconhecido',
                         severity: 'warning',
                         texto: 'Falha no login, tente novamente mais tarde'}))
@@ -53,6 +53,30 @@ export const armazenaInfoUsuario = user => {
     }
 }
 
+export const getSaveUsuarios = user => {
+    return {
+        type: GET_USUARIOS,
+        payload: user
+    }
+}
+
+export const getUsuarios = () => {
+    return (dispatch) => {
+        
+        axios.get("http://localhost:3001/auth")        
+            .then(response => {
+                const user = response.data
+                dispatch(getSaveUsuarios(user))                
+            })
+            .catch(req => {
+                dispatch(alertin({open: false,
+                    alertTitle: 'Erro',
+                    severity: 'error',
+                    texto: 'Erro em carregar os usuarios'}))
+            })  
+    }
+}
+
 export const criarUsuario = user => {
 
     return (dispatch) => {
@@ -63,7 +87,10 @@ export const criarUsuario = user => {
             password
           }})
             .then(response => {
-                alert("Usuário cadastrado")
+                dispatch(alertin({open: false,
+                    alertTitle: 'Cadastrado',
+                    severity: 'success',
+                    texto: 'Usuário cadastrado com sucesso'}))
             })
             .catch(req => {
                 const error = req.message.split(' ')
