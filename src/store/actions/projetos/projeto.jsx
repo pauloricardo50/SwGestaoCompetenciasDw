@@ -1,15 +1,34 @@
-import { USER_LOGGED_IN, USER_LOGGED_OUT } from '../actionsTypes'
+import { USER_LOGGED_IN, USER_LOGGED_OUT, GET_PROJETOS } from '../actionsTypes'
 
 import axios from 'axios'
 
 import { alertin } from '../alertas/alertas'
 
-export const logout = () => {
+export const getSaveProjetos = projeto => {
     return {
-        type: USER_LOGGED_OUT
+        type: GET_PROJETOS,
+        payload: projeto
     }
 }
 
+export const getProjetos = () => {
+    return (dispatch, getState) => {
+        const token = 'Bearer ' + getState().usuario.token
+        axios.get("http://localhost:3001/projects/title", {params: { token } })
+            .then(response => {
+                alert("TESTE")
+                const projeto = response.data
+                dispatch(getSaveProjetos(projeto))              
+            })
+            .catch(req => {
+                alert(req)
+                dispatch(alertin({open: false,
+                    alertTitle: 'Erro',
+                    severity: 'error',
+                    texto: 'Erro em carregar os Projetos'}))
+            })  
+    }
+}
 
 export const criarProjeto = projeto => {
     return (dispatch, getState) => {
@@ -27,14 +46,17 @@ export const criarProjeto = projeto => {
           }})
             .then(response => {
                 if(projeto.title === '' || projeto.about === '' || projeto.endedAt ===''){
-                    dispatch(alertin({open: true,
+                    dispatch(alertin({open: false,
                         alertTitle: 'Desconhecido',
                         severity: 'warning',
                         texto: 'Alguma coisa aconteceu, tente novamente mais tarde'}))
                 }
                 else{
                     projeto = response.data
-                    alert(JSON.stringify(projeto))
+                    dispatch(alertin({open: true,
+                        alertTitle: 'Criado com sucesso',
+                        severity: 'success',
+                        texto: "Projeto criado com sucesso"}))
                 }
             })
             .catch(req => {
@@ -43,20 +65,6 @@ export const criarProjeto = projeto => {
                     severity: 'warning',
                     texto: 'Alguma coisa aconteceu, tente novamente mais tarde'})) 
             })
-        
-    }
-}
-
-export const armazenaInfoUsuario = user => {
-    return {
-        type: USER_LOGGED_IN,
-        payload: user,
-    }
-}
-
-export const criarUsuario = user => {
-
-    return (dispatch) => {
         
     }
 }

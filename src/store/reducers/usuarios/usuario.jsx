@@ -29,8 +29,7 @@ const reducer = (state = initialState, action) => {
 
         case GET_USUARIOS:
             let getUsuarios = action.payload
-            return {
-                
+            return {                
                 ...state, getUsuarios
             }
         

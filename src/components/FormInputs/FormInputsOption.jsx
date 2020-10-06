@@ -2,22 +2,32 @@ import React, { Component } from "react";
 import { FormGroup, ControlLabel, FormControl, Row, Button } from "react-bootstrap";
 
 
-function OptionGroup({membros}) {
-  return membros.map((membro, index) => {
-    return (<option key={index} value={membro._id}>{membro.email}</option>)
-  })
+function OptionGroup({opcoes}) {  
+  try{
+    if(opcoes[opcoes.length-1].email){
+      return opcoes.map((opcao, index) => {
+        return (<option key={index} value={opcao._id}>{opcao.email}</option>)
+      })
+    }
+    else if(opcoes[opcoes.length-1].title){
+      return opcoes.map((opcao, index) => {
+        return (<option key={index} value={opcao._id}>{opcao.title}</option>)
+      })
+    }
+  }
+  catch{
+    alert('Erro ao carregar projetos')  
+  }  
 }
 
-
-
-function FieldGroup({ label, membros, ...props}) {
+function FieldGroup({ label, opcoes, ...props}) {
     
   return (
     <FormGroup>
       <ControlLabel {...props.ControlLabel}>{label}</ControlLabel>
       <FormControl {...props} >
         <option value="NULO"> Escolha uma opção</option>
-        <OptionGroup membros={membros}/>
+        <OptionGroup opcoes={opcoes}/>
       </FormControl> 
     </FormGroup>
     
@@ -34,7 +44,7 @@ export class FormInputsOption extends Component {
       row.push(
         <div key={i} className={this.props.ncols[i]}>
           
-          <FieldGroup {...this.props.properties[i]} membros={this.props.membros}/> 
+          <FieldGroup {...this.props.properties[i]} opcoes={this.props.opcoes}/> 
                    
         </div>
       );
