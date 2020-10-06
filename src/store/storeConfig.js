@@ -5,12 +5,12 @@ import thunk from 'redux-thunk'
 
 import usuarioReducer from './reducers/usuarios/usuario'
 import alertaReducer from './reducers/alertas/alertas'
-import projetosReducer from './reducers/projetos/projeto'
+// import projetosReducer from './reducers/projetos/projeto'
 
 const reducers = combineReducers({
     usuario : usuarioReducer,
     alerta : alertaReducer,
-    projeto : projetosReducer,
+    // projetos : projetosReducer,
 })
 
 const persistConfig = {

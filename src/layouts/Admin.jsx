@@ -10,7 +10,6 @@ import Sidebar from "components/Sidebar/Sidebar";
 import { style } from "variables/Variables.jsx";
 import { alertout } from '../store/actions/alertas/alertas'
 import { getUsuarios } from '../store/actions/usuarios/usuario'
-import { getProjetos } from '../store/actions/projetos/projeto'
 import routes from "routes.js";
 import Alerta from '../components/Alert/Alert'
 
@@ -77,7 +76,6 @@ class Admin extends Component {
   };
   componentDidMount() {
     this.props.getUsuarios()
-    this.props.getProjetos()
 
     var color = Math.floor(Math.random() * 4 + 1);
     var level;
@@ -113,7 +111,6 @@ class Admin extends Component {
     }
   }
   render(props) {
-    alert(JSON.stringify(this.props))
     
     if(!this.state.logado){
       this.props.alertout()
@@ -143,18 +140,16 @@ class Admin extends Component {
   }
  }
 
-const mapStateToProps = ({ usuario, alerta, projeto}) => {
+const mapStateToProps = ({ usuario, alerta}) => {
   return {
       usuario,
-      alerta,
-      projeto
+      alerta
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     alertout: () => dispatch(alertout()),
     getUsuarios: () => dispatch(getUsuarios()),
-    getProjetos: () => dispatch(getProjetos()),
 
   }
 }

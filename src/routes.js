@@ -13,13 +13,6 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/criar-projeto",
-    name: "Criar Projeto",
-    icon: "pe-7s-news-paper",
-    component: CriarProjeto,
-    layout: "/admin"
-  },
-  {
     path: "/task",
     name: "Criar Task",
     icon: "pe-7s-user",
@@ -31,6 +24,13 @@ const dashboardRoutes = [
     name: "Projetos",
     icon: "pe-7s-note2",
     component: TableList,
+    layout: "/admin"
+  },
+  {
+    path: "/criar-projeto",
+    name: "Criar Projeto",
+    icon: "pe-7s-news-paper",
+    component: CriarProjeto,
     layout: "/admin"
   },
   {
