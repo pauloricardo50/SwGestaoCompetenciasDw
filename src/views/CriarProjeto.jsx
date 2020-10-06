@@ -35,7 +35,7 @@ class CriarProjeto extends Component {
   }
 
   async componentDidMount(){
-    this.onChangeGetUsuarios(this.props.usuario.getUsuarios)    
+    this.onChangeGetUsuarios(this.props.usuario.getUsuarios)
   }
 
   onChangeGetUsuarios = (getUsuarios) => {
@@ -127,7 +127,7 @@ class CriarProjeto extends Component {
                     />
                     <FormInputsOption
                       ncols= {["col-md-4", "col-md-4", "col-md-4"]}
-                      membros= {this.props.usuario.getUsuarios.usuarios}
+                      opcoes= {this.props.usuario.getUsuarios.usuarios}
                       properties={[
                         {
                           name: "membro1",
