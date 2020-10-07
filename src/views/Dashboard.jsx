@@ -74,7 +74,6 @@ class Dashboard extends Component {
             </Col>
             <Col md={4}>
               <Card
-                statsIcon="fa fa-clock-o"
                 title="Ferramentas utilizadas"
                 content={
                   <div
@@ -112,14 +111,13 @@ class Dashboard extends Component {
 
             <Col md={6}>
               <Card
-                  statsIcon="fa fa-clock-o"
                   title="Índice de satisfação"
                   content={
                       <ChartistGraph data={dataDashBoard} type="Pie" />
                  
                   }
                   legend={
-                    <div className="legend">{this.createLegend(legendPie)}</div>
+                    <div className="legend">{this.createLegend(legendDashBoard)}</div>
                   }
                 />
             </Col>

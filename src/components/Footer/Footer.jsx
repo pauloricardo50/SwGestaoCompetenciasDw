@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 
 import { Grid, Button } from "react-bootstrap";
-import { getProjeto, criarProjeto, updateTaskProjeto } from '../../store/actions/projetos/projeto'
+import { getProjeto, criarProjeto } from '../../store/actions/projetos/projeto'
+import { saveTask } from '../../store/actions/tasks/task'
 
 class Footer extends Component {
   render() {
@@ -19,24 +20,27 @@ class Footer extends Component {
             </a>
             , Trabalho de Desenvolvimento Web.
           </p>
-          <Button onClick = {() =>{
+          {/* <Button onClick = {() =>{
             var projeto = {
-              "title": "IAmHere",
-              "_id": "5f7c8762f94b3a3ba82ee572",
+              "title": "ToDo Day",
+              "_id": "5f7c893af94b3a3ba82ee573",
             }
             this.props.getProjeto(projeto._id)
             const task = {
-              "title": "TESTE1",
-              "project": projeto._id,
-              "technology":"React",
-              "description":"TESTE2",
-              "category":"TESTE3",
-              "subcategory":"TESTE4",
+              "title": "Botao de adicionar",
+              "assignedTo": this.props.usuario._id,
+              "about":"Fazer o adicionar da lista",
+              "frontend": "Javascript - React",
+              "backend": "Javascript - Express",
+              "banco": "MongoDB",
+              "category":"Funcionalidade",
+              "subcategory":"Botao",
+              "finishedAt":"2020-10-21T00:00:00.000Z"
             }
             
-            this.props.updateTaskProjeto(this.props.projeto.projetoUpdate, task)
+            this.props.saveTask(this.props.projeto.projetoUpdate, task)
 
-          }} >TESTE</Button>
+          }} >TESTE</Button> */}
         </Grid>
       </footer>
     );
@@ -53,7 +57,7 @@ const mapDispatchToProps = dispatch => {
   return {
     getProjeto: (idprojeto) => dispatch(getProjeto(idprojeto)),
     criarProjeto: (projeto) => dispatch(criarProjeto(projeto)),
-    updateTaskProjeto: (projetoUpdate,task) => dispatch(updateTaskProjeto(projetoUpdate,task)),
+    saveTask: (projetoUpdate,task) => dispatch(saveTask(projetoUpdate,task)),
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Footer)

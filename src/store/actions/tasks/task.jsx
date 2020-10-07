@@ -1,4 +1,7 @@
 import { TECNOLOGIA_IN, CREATE_TASK } from '../actionsTypes'
+import axios from 'axios'
+
+import { alertin } from '../alertas/alertas'
 
 export const getTecnologias = () => {
     return {
@@ -13,43 +16,40 @@ export const criarTask = (task) => {
     }
 }
 
-export const saveTask = task => {
+export const saveTask = (projeto, task) => {
     return (dispatch, getState) => {
-      const { title, about, team, tasks, createdAt, endedAt } = projeto
+        const titleTask = task.title
+        const aboutTask = task.about
+        const { title, about, team} = projeto
+        const { assignedTo, frontend, backend, banco, category, subcategory, finishedAt} = task
+        
       const token = 'Bearer ' + getState().usuario.token
-      axios.put("http://localhost:3001/projects", null, { params: {
+      axios.put("http://localhost:3001/projects/"+projeto._id, null, { params: {
             title,
-            project,
+            about,            
+            team,
+            titleTask,
+            aboutTask,
+            assignedTo,
             frontend,
             backend,
             banco,
-            createdAt,
-            endedAt,
-            about,
             category,
             subcategory,
+            finishedAt,
             token
-          }})
+          }} )
             .then(response => {
-                if(projeto.title === '' || projeto.about === '' || projeto.endedAt ===''){
-                    dispatch(alertin({open: false,
-                        alertTitle: 'Campo Vazio',
-                        severity: 'error',
-                        texto: 'Alguns campos estão vazios, favor preencher'}))
-                }
-                else{
-                    projeto = response.data
-                    dispatch(alertin({open: true,
-                        alertTitle: 'Criado com sucesso',
-                        severity: 'success',
-                        texto: "Projeto criado com sucesso"}))
-                }
+                dispatch(alertin({open: false,
+                    alertTitle: 'Criação concluída',
+                    severity: 'success',
+                    texto: 'Task criada com sucesso'}))
             })
             .catch(req => {
                 dispatch(alertin({open: false,
-                    alertTitle: 'Desconhecido',
-                    severity: 'warning',
-                    texto: 'Alguma coisa aconteceu, tente novamente mais tarde'})) 
+                    alertTitle: 'Erro',
+                    severity: 'error',
+                    texto: 'Erro em criar a Task'}))
             })
         
     }

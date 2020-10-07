@@ -483,16 +483,16 @@ var dataPie = {
   series: [60, 20, 10, ,10]
 };
 var legendPie = {
-  names: ["Open", "Bounce", "Unsubscribe","Teste"],
+  names: ["Javascript - React", "Python - Django", "Javascript - Angular","MongoDB"],
   types: ["info", "danger", "warning","success"]
 };
 
 var dataDashBoard = {
-  labels: ["60%", "20%", "10%", ,"10%"],
-  series: [60, 20, 10, ,10]
+  labels: ["45%", "20%", "15%", ,"15%","5%"],
+  series: [45, 20, 15, ,15,,5]
 };
 var legendDashBoard = {
-  names: ["Open", "Bounce", "Unsubscribe","Teste"],
+  names: ["Muito satisfeito", "Satisfeito", "Normal", "Insatisfeito", "Muito insatisfeito"],
   types: ["info", "danger", "warning","success"]
 };
 

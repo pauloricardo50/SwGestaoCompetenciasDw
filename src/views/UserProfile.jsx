@@ -15,6 +15,8 @@ import { FormInputsOption } from "components/FormInputs/FormInputsOption.jsx";
 import { FormInputsMultOption } from "components/FormInputs/FormInputsMultOption.jsx";
 import { UserCard } from "components/UserCard/UserCard.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
+import { getProjeto } from '../store/actions/projetos/projeto'
+import { saveTask } from '../store/actions/tasks/task'
 
 import avatar from "assets/img/faces/face-8.jpg";
 import wallpaper from "assets/img/faces/wallpaper.jpg";
@@ -44,7 +46,7 @@ class UserProfile extends Component {
   async componentDidMount(){  
   }
 
-  onChangeFrontend = (event) => {
+    onChangeFrontend = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -220,13 +222,22 @@ class UserProfile extends Component {
                         </FormGroup>
                       </Col>
                     </Row>
-                    <Button bsStyle="info" pullRight fill type="submit" 
+                    <Button bsStyle="info" pullRight fill
                       onClick={()=>
                               {
-                                alert(JSON.stringify(this.state))
-                                
-
-                       
+                                this.props.getProjeto(this.state.getProjeto)
+                                const task = {
+                                  "title": this.state.nameTask,
+                                  "assignedTo": this.props.usuario._id,
+                                  "about": this.state.about,
+                                  "frontend": this.state.frontend,
+                                  "backend": this.state.backend,
+                                  "banco": this.state.banco,
+                                  "category": this.state.categoria,
+                                  "subcategory": this.state.subCategoria,
+                                  "finishedAt": this.state.dataFim
+                                }
+                                this.props.saveTask(this.props.projeto.projetoUpdate, task)                       
                               }}>
                       Criar Task
                     </Button>
@@ -272,6 +283,8 @@ const mapStateToProps = ({ usuario, projeto, task }) => {
 }
 const mapDispatchToProps = dispatch => {
   return {
+    saveTask: (projetoUpdate,task) => dispatch(saveTask(projetoUpdate,task)),
+    getProjeto: (idprojeto) => dispatch(getProjeto(idprojeto)),
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)

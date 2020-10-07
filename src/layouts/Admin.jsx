@@ -116,7 +116,6 @@ class Admin extends Component {
     }
   }
   render(props) {
-    alert(JSON.stringify(this.props.projeto))
     if(!this.state.logado){
       this.props.alertout()
       return <Redirect to="/login-admin"/>

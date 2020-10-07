@@ -36,9 +36,10 @@ export const getProjetos = () => {
 }
 
 export const getProjeto = (idprojeto) => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         const token = 'Bearer ' + getState().usuario.token
-        axios.get("http://localhost:3001/projects/"+idprojeto, {params: { token } })
+            
+        await axios.get("http://localhost:3001/projects/"+idprojeto, {params: { token } })
             .then(response => {
                 const projeto = response.data
                 dispatch(getUpdateProjetos(projeto))              
@@ -48,7 +49,7 @@ export const getProjeto = (idprojeto) => {
                     alertTitle: 'Erro',
                     severity: 'error',
                     texto: 'Erro em carregar o Projeto'}))
-            })  
+            }) 
     }
 }
 
