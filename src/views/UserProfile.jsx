@@ -17,6 +17,7 @@ import { UserCard } from "components/UserCard/UserCard.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 import { getProjeto } from '../store/actions/projetos/projeto'
 import { saveTask } from '../store/actions/tasks/task'
+import { alertin } from '../store/actions/alertas/alertas'
 
 import avatar from "assets/img/faces/face-8.jpg";
 import wallpaper from "assets/img/faces/wallpaper.jpg";
@@ -52,7 +53,7 @@ class UserProfile extends Component {
     })
     
   }
-
+ 
   onChangeBackend = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -223,9 +224,9 @@ class UserProfile extends Component {
                       </Col>
                     </Row>
                     <Button bsStyle="info" pullRight fill
-                      onClick={()=>
+                      onClick={async ()=>
                               {
-                                this.props.getProjeto(this.state.getProjeto)
+                                await this.props.getProjeto(this.state.getProjeto)
                                 const task = {
                                   "title": this.state.nameTask,
                                   "assignedTo": this.props.usuario._id,
@@ -236,8 +237,9 @@ class UserProfile extends Component {
                                   "category": this.state.categoria,
                                   "subcategory": this.state.subCategoria,
                                   "finishedAt": this.state.dataFim
+                                  
                                 }
-                                this.props.saveTask(this.props.projeto.projetoUpdate, task)                       
+                                await this.props.saveTask(this.props.projeto.projetoUpdate, task)
                               }}>
                       Criar Task
                     </Button>
@@ -285,6 +287,8 @@ const mapDispatchToProps = dispatch => {
   return {
     saveTask: (projetoUpdate,task) => dispatch(saveTask(projetoUpdate,task)),
     getProjeto: (idprojeto) => dispatch(getProjeto(idprojeto)),
+    alertin: (alerta) => dispatch(alertin(alerta)),
+
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
