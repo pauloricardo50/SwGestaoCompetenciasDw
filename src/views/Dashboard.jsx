@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+
 import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
-import {RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend} from "recharts";
+import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend } from "recharts";
 
 import { Card } from "components/Card/Card.jsx";
 import { StatsCard2 } from "components/StatsCard/StatsCard2.jsx";
@@ -44,7 +46,7 @@ class Dashboard extends Component {
               <StatsCard2
                 // bigIcon={<i className="pe-7s-server text-warning" />}
                 statsText="Usuários ativos"
-                statsValue="25"
+                statsValue= {this.props.usuario.getUsuarios.usuarios.length-1}
               />
               
             </Col>
@@ -128,4 +130,15 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = ({ usuario, alerta }) => {
+  return {
+      usuario,
+      alerta
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {     
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+

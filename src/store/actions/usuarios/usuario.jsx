@@ -24,13 +24,13 @@ export const autenticarUsuario = user => {
             })
             .catch(req => {
                 const error = req.message.split(' ')
-                if (error[error.length - 1]=="404"){
+                if (error[error.length - 1]==="404"){
                     dispatch(alertin({open: true,
                         alertTitle: 'Erro',
                         severity: 'error',
                         texto: 'E-mail incorreto, verifique e tente novamente'}))                    
                 }
-                else if(error[error.length - 1]=="401"){
+                else if(error[error.length - 1]==="401"){
                     dispatch(alertin({open: true,
                         alertTitle: 'Erro',
                         severity: 'error',
@@ -94,26 +94,26 @@ export const criarUsuario = user => {
             })
             .catch(req => {
                 const error = req.message.split(' ')
-                if (error[error.length - 1]=="404"){
+                if (error[error.length - 1]==="404"){
                     dispatch(alertin({open: false,
                         alertTitle: 'Error',
                         severity: 'error',
                         texto: 'Este e-mail já está sendo utilziado, favor use outro'}))
                     
                 }
-                else if (error[error.length - 1]=="403"){
+                else if (error[error.length - 1]==="403"){
                     dispatch(alertin({open: false,
                         alertTitle: 'Campo nulo',
                         severity: 'error',
                         texto: 'O campo Senha está nulo, favor preencher a senha'}))
                 }
-                else if (error[error.length - 1]=="402"){
+                else if (error[error.length - 1]==="402"){
                     dispatch(alertin({open: false,
                         alertTitle: 'Campo nulo',
                         severity: 'error',
                         texto: 'O campo Nome está nulo, favor preencher o nome'}))
                 }
-                else if (error[error.length - 1]=="401"){
+                else if (error[error.length - 1]==="401"){
                     dispatch(alertin({open: false,
                         alertTitle: 'Campo nulo',
                         severity: 'error',

@@ -1,4 +1,4 @@
-import { USER_LOGGED_IN, USER_LOGGED_OUT, GET_PROJETOS } from '../actionsTypes'
+import { GET_PROJETOS, GET_PROJETO_UPDATE, UPDATE_PROJETO_TASK } from '../actionsTypes'
 
 import axios from 'axios'
 
@@ -11,17 +11,22 @@ export const getSaveProjetos = projeto => {
     }
 }
 
+export const getUpdateProjetos = projeto => {
+    return {
+        type: GET_PROJETO_UPDATE,
+        payload: projeto
+    }
+}
+
 export const getProjetos = () => {
     return (dispatch, getState) => {
         const token = 'Bearer ' + getState().usuario.token
         axios.get("http://localhost:3001/projects/title", {params: { token } })
             .then(response => {
-                alert("TESTE")
                 const projeto = response.data
                 dispatch(getSaveProjetos(projeto))              
             })
             .catch(req => {
-                alert(req)
                 dispatch(alertin({open: false,
                     alertTitle: 'Erro',
                     severity: 'error',
@@ -30,11 +35,27 @@ export const getProjetos = () => {
     }
 }
 
+export const getProjeto = (idprojeto) => {
+    return (dispatch, getState) => {
+        const token = 'Bearer ' + getState().usuario.token
+        axios.get("http://localhost:3001/projects/"+idprojeto, {params: { token } })
+            .then(response => {
+                const projeto = response.data
+                dispatch(getUpdateProjetos(projeto))              
+            })
+            .catch(req => {
+                dispatch(alertin({open: false,
+                    alertTitle: 'Erro',
+                    severity: 'error',
+                    texto: 'Erro em carregar o Projeto'}))
+            })  
+    }
+}
+
 export const criarProjeto = projeto => {
     return (dispatch, getState) => {
       const { title, about, team, tasks, createdAt, endedAt } = projeto
       const token = 'Bearer ' + getState().usuario.token
-      alert(JSON.stringify(projeto))
       axios.post("http://localhost:3001/projects", null, { params: {
             title,
             about,
@@ -47,9 +68,9 @@ export const criarProjeto = projeto => {
             .then(response => {
                 if(projeto.title === '' || projeto.about === '' || projeto.endedAt ===''){
                     dispatch(alertin({open: false,
-                        alertTitle: 'Desconhecido',
-                        severity: 'warning',
-                        texto: 'Alguma coisa aconteceu, tente novamente mais tarde'}))
+                        alertTitle: 'Campo Vazio',
+                        severity: 'error',
+                        texto: 'Alguns campos estão vazios, favor preencher'}))
                 }
                 else{
                     projeto = response.data
@@ -68,3 +89,12 @@ export const criarProjeto = projeto => {
         
     }
 }
+
+export const updateTaskProjeto = (projetoUpdate,task) => {
+    return {
+        type: UPDATE_PROJETO_TASK,
+        payload: projetoUpdate, task
+    }
+}
+
+// export const updateProjeto = 

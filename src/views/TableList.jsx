@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Grid, Row, Col, Table } from "react-bootstrap";
+import {  Redirect, Link } from "react-router-dom";
+
 import Button from "components/CustomButton/CustomButton.jsx";
 import Card from "components/Card/Card.jsx";
 import { thArray, tdArray,tdArray2 } from "variables/Variables.jsx";
@@ -10,7 +12,10 @@ class ListaProjetos extends Component {
     return (
       <div className="content">
         <Grid fluid>
-        <Button bsStyle="info" pullRight fill type="submit"> Adicionar </Button>
+        
+          <Button bsStyle="info" pullRight fill type="submit" style={{fontSize:"1.3em", marginBottom:"1em"}}> 
+            <Link to="/admin/criar-projeto" style={{color:'white'}}>Adicionar</Link> 
+          </Button>
           <Row>
             <Col md={12}>
               <Card

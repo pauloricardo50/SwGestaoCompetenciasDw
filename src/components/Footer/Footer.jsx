@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 
 import { Grid, Button } from "react-bootstrap";
-import { criarProjeto } from '../../store/actions/projetos/projeto'
+import { getProjeto, criarProjeto, updateTaskProjeto } from '../../store/actions/projetos/projeto'
 
 class Footer extends Component {
   render() {
@@ -21,14 +21,20 @@ class Footer extends Component {
           </p>
           <Button onClick = {() =>{
             var projeto = {
-              'title':"TESTE1",
-              'about':"TESTE1",
-              'team':[],
-              'tasks':[],
-              'createdAt':'2020-10-03T19:00:38.383Z',
-              'endedAt':'2020-10-02T19:00:38.383Z',
+              "title": "IAmHere",
+              "_id": "5f7c8762f94b3a3ba82ee572",
             }
-            this.props.criarProjeto(projeto)
+            this.props.getProjeto(projeto._id)
+            const task = {
+              "title": "TESTE1",
+              "project": projeto._id,
+              "technology":"React",
+              "description":"TESTE2",
+              "category":"TESTE3",
+              "subcategory":"TESTE4",
+            }
+            
+            this.props.updateTaskProjeto(this.props.projeto.projetoUpdate, task)
 
           }} >TESTE</Button>
         </Grid>
@@ -37,14 +43,17 @@ class Footer extends Component {
   }
 }
 
-const mapStateToProps = ({ usuario }) => {
+const mapStateToProps = ({ usuario, projeto }) => {
   return {
       usuario,
+      projeto
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
+    getProjeto: (idprojeto) => dispatch(getProjeto(idprojeto)),
     criarProjeto: (projeto) => dispatch(criarProjeto(projeto)),
+    updateTaskProjeto: (projetoUpdate,task) => dispatch(updateTaskProjeto(projetoUpdate,task)),
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Footer)

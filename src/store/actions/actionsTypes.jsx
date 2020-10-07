@@ -6,3 +6,7 @@ export const ALERT_IN = 'ALERT_IN';
 export const ALERT_OUT = 'ALERT_OUT';
 export const GET_USUARIOS = 'GET_USUARIOS';
 export const GET_PROJETOS = 'GET_PROJETOS';
+export const GET_PROJETO_UPDATE = 'GET_PROJETO_UPDATE';
+export const UPDATE_PROJETO_TASK = 'UPDATE_PROJETO_TASK';
+export const TECNOLOGIA_IN = 'TECNOLOGIA_IN';
+export const CREATE_TASK = 'CREATE_TASK';

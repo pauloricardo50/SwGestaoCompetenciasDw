@@ -11,6 +11,8 @@ import { style } from "variables/Variables.jsx";
 import { alertout } from '../store/actions/alertas/alertas'
 import { getUsuarios } from '../store/actions/usuarios/usuario'
 import { getProjetos } from '../store/actions/projetos/projeto'
+import { getTecnologias } from '../store/actions/tasks/task'
+
 import routes from "routes.js";
 import Alerta from '../components/Alert/Alert'
 
@@ -78,6 +80,7 @@ class Admin extends Component {
   componentDidMount() {
     this.props.getUsuarios()
     this.props.getProjetos()
+    this.props.getTecnologias()
 
     var color = Math.floor(Math.random() * 4 + 1);
     var level;
@@ -113,8 +116,7 @@ class Admin extends Component {
     }
   }
   render(props) {
-    alert(JSON.stringify(this.props))
-    
+    alert(JSON.stringify(this.props.projeto))
     if(!this.state.logado){
       this.props.alertout()
       return <Redirect to="/login-admin"/>
@@ -143,11 +145,12 @@ class Admin extends Component {
   }
  }
 
-const mapStateToProps = ({ usuario, alerta, projeto}) => {
+const mapStateToProps = ({ usuario, alerta, projeto, task}) => {
   return {
       usuario,
       alerta,
-      projeto
+      projeto,
+      task
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -155,6 +158,7 @@ const mapDispatchToProps = dispatch => {
     alertout: () => dispatch(alertout()),
     getUsuarios: () => dispatch(getUsuarios()),
     getProjetos: () => dispatch(getProjetos()),
+    getTecnologias: () => dispatch(getTecnologias()),
 
   }
 }

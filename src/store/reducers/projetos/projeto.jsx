@@ -1,6 +1,8 @@
 import { PROJECT_IN, 
     PROJECT_OUT,
-    GET_PROJETOS
+    GET_PROJETOS,
+    GET_PROJETO_UPDATE,
+    UPDATE_PROJETO_TASK
 } from '../../actions/actionsTypes'
 
 const initialState = {
@@ -11,7 +13,8 @@ team: [],
 task: [],
 dataInicio: '',
 dataFim: '',
-getProjetos: {}
+getProjetos: {},
+projetoUpdate: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -34,6 +37,19 @@ switch (action.type) {
         return {                
             ...state, getProjetos
         }
+    case GET_PROJETO_UPDATE:
+        let projetoUpdate = action.payload.project
+        return {                
+            ...state, projetoUpdate
+        }
+    case UPDATE_PROJETO_TASK:
+        let projeto = action.payload
+        projeto.tasks.push(action.task)
+        return{
+            ...state, projetoUpdate: projeto
+            
+        }
+    
 
    default:
        return state

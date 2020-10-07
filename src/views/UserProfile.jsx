@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import { FormInputsOption } from "components/FormInputs/FormInputsOption.jsx";
+import { FormInputsMultOption } from "components/FormInputs/FormInputsMultOption.jsx";
 import { UserCard } from "components/UserCard/UserCard.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 
@@ -20,14 +21,17 @@ import wallpaper from "assets/img/faces/wallpaper.jpg";
 import wallpaper2 from "assets/img/faces/wallpaper2.jpg";
 
 const initialState = {
-  nameTask: '',
-  dataInicio: '',
-  dataFim: '',
-  about: '',
-  tecnologias: '',
-  categoria:'',
-  subCategoria:'',
-  getProjeto:'',
+  nameTask: "",
+  getProjeto:"",
+  frontend: "",
+  backend: "",
+  banco: "",
+  categoria:"",
+  subCategoria:"",
+  dataInicio: "",
+  dataFim: "",
+  about: "",
+  
 }
 
 class UserProfile extends Component {
@@ -40,15 +44,28 @@ class UserProfile extends Component {
   async componentDidMount(){  
   }
 
-  onChangeTecnologias = (event) => {
+  onChangeFrontend = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+    
+  }
+
+  onChangeBackend = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-  onChangeGetProjeto = (getProjetos) => {
+  onChangeBanco = (event) => {
     this.setState({
-      getProjetos : getProjetos
+      [event.target.name]: event.target.value
+    })
+  }
+
+  onChangeGetProjeto = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
    })
   }
 
@@ -152,26 +169,39 @@ class UserProfile extends Component {
                       opcoes= {this.props.projeto.getProjetos.projetos}
                       properties={[
                         {
-                          name: "projeto",
+                          name: "getProjeto",
                           label: "Projeto",
                           componentClass:"select",
                           placeholder: "Projeto",
-                          onChange: this.onChangeProjeto,
+                          onChange: this.onChangeGetProjeto,
                         },
                       ]}
                     />       
-                    <FormInputs
-                      ncols={["col-md-12"]}
+                     <FormInputsMultOption
+                      ncols= {["col-md-4", "col-md-4", "col-md-4"]}
+                      opcoes= {this.props.task}
                       properties={[
                         {
-                          name:"tecnologias",
-                          label: "Tecnologias",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Javascript, React, Node, MongoDB",
-                          onChange: this.onChangeTecnologias,
+                          name: "backend",
+                          label: "Backend",
+                          componentClass:"select",
+                          placeholder: "Backend",
+                          onChange: this.onChangeBackend,
                         },
-                        
+                        {
+                          name: "frontend",
+                          label: "Frontend",
+                          componentClass:"select",
+                          placeholder: "Frontend",
+                          onChange: this.onChangeFrontend,
+                        },
+                        {
+                          name: "banco",
+                          label: "Banco",
+                          componentClass:"select",
+                          placeholder: "Banco",
+                          onChange: this.onChangeBanco,
+                        }
                       ]}
                     />
 
@@ -190,7 +220,14 @@ class UserProfile extends Component {
                         </FormGroup>
                       </Col>
                     </Row>
-                    <Button bsStyle="info" pullRight fill type="submit" onClick={()=>{alert(JSON.stringify(this.state))}}>
+                    <Button bsStyle="info" pullRight fill type="submit" 
+                      onClick={()=>
+                              {
+                                alert(JSON.stringify(this.state))
+                                
+
+                       
+                              }}>
                       Criar Task
                     </Button>
                     <div className="clearfix" />
@@ -226,10 +263,11 @@ class UserProfile extends Component {
     );
   }
 }
-const mapStateToProps = ({ usuario, projeto }) => {
+const mapStateToProps = ({ usuario, projeto, task }) => {
   return {
       usuario,
-      projeto
+      projeto,
+      task
   }
 }
 const mapDispatchToProps = dispatch => {

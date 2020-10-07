@@ -171,20 +171,19 @@ class CriarProjeto extends Component {
                     <Button bsStyle="info" pullRight fill type="submit" 
                     onClick={()=>
                               {
-                                const team = []
-                                const membro1 = this.state.membro1 ? team.push(this.state.membro1) : this.state.membro1
-                                const membro2 = this.state.membro2 ? team.push(this.state.membro2) : this.state.membro2
-                                const membro3 = this.state.membro3 ? team.push(this.state.membro3) : this.state.membro3
-                                const projeto = {
-                                                  title:this.state.nameProjeto, 
-                                                  about:this.state.about,
-                                                  team:team,
-                                                  task:[],
-                                                  createdAt:this.state.dataInicio,
-                                                  endedAt:this.state.dataFim
-                                                }
-                                this.props.criarProjeto(projeto)
-                                           
+                                // const team = []
+                                // const membro1 = this.state.membro1 ? team.push(this.state.membro1) : this.state.membro1
+                                // const membro2 = this.state.membro2 ? team.push(this.state.membro2) : this.state.membro2
+                                // const membro3 = this.state.membro3 ? team.push(this.state.membro3) : this.state.membro3
+                                // const projeto = {
+                                //                   title:this.state.nameProjeto, 
+                                //                   about:this.state.about,
+                                //                   team:team,
+                                //                   tasks:[],
+                                //                   createdAt:this.state.dataInicio,
+                                //                   endedAt:this.state.dataFim
+                                //                 }
+                                // this.props.criarProjeto(projeto)                                      
                             }
                           }>
                       Criar Projeto
