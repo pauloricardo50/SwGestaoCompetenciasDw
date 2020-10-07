@@ -21,7 +21,7 @@ export const getUpdateProjetos = projeto => {
 export const getProjetos = () => {
     return (dispatch, getState) => {
         const token = 'Bearer ' + getState().usuario.token
-        axios.get("http://localhost:3001/projects/title", {params: { token } })
+        axios.get("https://afternoon-brook-96552.herokuapp.com/projects/title", {params: { token } })
             .then(response => {
                 const projeto = response.data
                 dispatch(getSaveProjetos(projeto))              
@@ -39,7 +39,7 @@ export const getProjeto = (idprojeto) => {
     return async (dispatch, getState) => {
         const token = 'Bearer ' + getState().usuario.token
             
-        await axios.get("http://localhost:3001/projects/"+idprojeto, {params: { token } })
+        await axios.get("https://afternoon-brook-96552.herokuapp.com/projects/"+idprojeto, {params: { token } })
             .then(response => {
                 const projeto = response.data
                 dispatch(getUpdateProjetos(projeto))              
@@ -57,7 +57,7 @@ export const criarProjeto = projeto => {
     return (dispatch, getState) => {
       const { title, about, team, tasks, createdAt, endedAt } = projeto
       const token = 'Bearer ' + getState().usuario.token
-      axios.post("http://localhost:3001/projects", null, { params: {
+      axios.post("https://afternoon-brook-96552.herokuapp.com/projects", null, { params: {
             title,
             about,
             team,

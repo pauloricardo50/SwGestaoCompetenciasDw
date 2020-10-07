@@ -63,7 +63,7 @@ export const getSaveUsuarios = user => {
 export const getUsuarios = () => {
     return (dispatch) => {
         
-        axios.get("http://localhost:3001/auth")        
+        axios.get("https://afternoon-brook-96552.herokuapp.com/auth")        
             .then(response => {
                 const user = response.data
                 dispatch(getSaveUsuarios(user))                

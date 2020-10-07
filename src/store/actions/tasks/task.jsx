@@ -24,7 +24,7 @@ export const saveTask = (projeto, task) => {
         const { assignedTo, frontend, backend, banco, category, subcategory, finishedAt} = task
         
       const token = 'Bearer ' + getState().usuario.token
-      axios.put("http://localhost:3001/projects/"+projeto._id, null, { params: {
+      axios.put("https://afternoon-brook-96552.herokuapp.com/projects/"+projeto._id, null, { params: {
             title,
             about,            
             team,
