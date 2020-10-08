@@ -77,10 +77,10 @@ class Admin extends Component {
       this.setState({ fixedClasses: "dropdown" });
     }
   };
-  componentDidMount() {
-    this.props.getUsuarios()
-    this.props.getProjetos()
-    this.props.getTecnologias()
+  async componentDidMount() {
+    await this.props.getUsuarios()
+    await this.props.getProjetos()
+    await this.props.getTecnologias()
 
     var color = Math.floor(Math.random() * 4 + 1);
     var level;

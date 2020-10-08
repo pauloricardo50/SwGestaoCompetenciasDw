@@ -1,8 +1,36 @@
 import React, { Component } from "react";
 import { Row, Col, Nav,NavDropdown,MenuItem } from "react-bootstrap";
 
+
+function MenuItemGroupTitle(opcoes){
+  var row = [];
+    for (var i = 0; i < opcoes.opcoes.length; i++) {
+      row.push(
+          
+          <MenuItem eventKey={opcoes.opcoes[i]._id}>{opcoes.opcoes[i].title}</MenuItem>
+              
+      );
+    }
+    return row;
+}
+
+function MenuItemGroupEmail(opcoes){
+  var row = [];
+    for (var i = 0; i < opcoes.opcoes.length; i++) {
+      row.push(
+          
+          <MenuItem eventKey={opcoes.opcoes[i]._id}>{opcoes.opcoes[i].email}</MenuItem>
+              
+      );
+    }
+    return row;
+
+}
+
 export class StatsCard extends Component {
   render() {
+    const MenuItem = this.props.opcoes[0].title ? <MenuItemGroupTitle opcoes = {this.props.opcoes}/> : <MenuItemGroupEmail opcoes = {this.props.opcoes}/>
+
     return (
       <div className="card card-stats">
         <div className="content">
@@ -20,11 +48,7 @@ export class StatsCard extends Component {
                   title={this.props.statsText}
                   id="basic-nav-dropdown"
                 >
-                  <MenuItem eventKey={2.1}>{this.props.item1}</MenuItem>
-                  <MenuItem eventKey={2.2}>{this.props.item2}</MenuItem>
-                  <MenuItem eventKey={2.3}>{this.props.item3}</MenuItem>
-                  <MenuItem eventKey={2.4}>{this.props.item4}</MenuItem>
-                  <MenuItem eventKey={2.5}>{this.props.item5}</MenuItem>
+                  {MenuItem}
                 </NavDropdown>
                 </Nav>
               </div>

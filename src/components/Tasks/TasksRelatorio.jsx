@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import Checkbox from "components/CustomCheckbox/CustomCheckbox.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
+import { connect } from 'react-redux';
+
 
 export class TasksRelatorio extends Component {
+
+  
+
   handleCheckbox = event => {
     const target = event.target;
     console.log(event.target);
@@ -11,20 +16,29 @@ export class TasksRelatorio extends Component {
       [target.name]: target.checked
     });
   };
+
+
+ 
   render() {
+    const projectGet = this.props.projetos.getProjetos.projetos
+    const tasksGet = this.props.tasks.getTasks.tasks
+    var tasksList = []
+    if(tasksGet!== undefined){
+      tasksGet.map((task, index) => {
+        projectGet.map((projeto, index) => {
+          if(projeto._id === task.project){
+            tasksList.push("("+projeto.title+")  " + task.title + " --- " + task.about)
+          }
+        })       
+      })
+    }
+   
     const edit = <Tooltip id="edit_tooltip">Edit Task</Tooltip>;
     const remove = <Tooltip id="remove_tooltip">Remove</Tooltip>;
-    const tasks_title = [
-      "(SmartPay) Desenvolver Diagrama de Classes",
-      "(SmartPay) Desenvolver Modelo ER",
-      "(NetIFES) Atualizar Protótipo de Telas",
-      "(IAmHere) Atualizar Banco de Dados",
-      "(IAmHere) Testar nova tela de cadastro",
-      "(IAmHere) Treinar IA com novas fotos carregadas"
-    ];
+    
     var tasks = [];
     var number;
-    for (var i = 0; i < tasks_title.length; i++) {
+    for (var i = 0; i < tasksList.length; i++) {
       number = "checkbox" + i;
       tasks.push(
         <tr key={i}>
@@ -34,7 +48,7 @@ export class TasksRelatorio extends Component {
               isChecked={i === 1 || i === 2 ? true : false}
             />
           </td>
-          <td>{tasks_title[i]}</td>
+          <td>{tasksList[i]}</td>
           <td className="td-actions text-right">
             <OverlayTrigger placement="top" overlay={edit}>
               <Button bsStyle="info" simple type="button" bsSize="xs">
@@ -55,4 +69,16 @@ export class TasksRelatorio extends Component {
   }
 }
 
-export default TasksRelatorio;
+const mapStateToProps = ({ usuario, projeto, task }) => {
+  return {
+    usuario,
+    projeto,
+    task
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(TasksRelatorio)

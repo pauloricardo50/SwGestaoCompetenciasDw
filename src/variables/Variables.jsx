@@ -606,12 +606,12 @@ var responsiveAtividades = [
 
 // Grafico Linguagens
 var dataLinguagens = {
-  labels: ["40%", "35%", "15%",,"10%"],
-  series: [60, 20, 10,,10]
+  labels: ["45%", "20%", "10%","15%","10%"],
+  series: [45, 20, 10,15,10]
 };
 var legendLinguagens = {
-  names: ["Python", "Javascript", "PHP","Java"],
-  types: ["info", "danger", "warning","success"]
+  names: ["Python", "Javascript", "PHP","Java","JAVA2"],
+  types: ["info", "danger", "warning","success","white"]
 };
 
 // Data for Bar Chart

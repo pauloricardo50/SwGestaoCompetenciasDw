@@ -1,4 +1,4 @@
-import { TECNOLOGIA_IN, CREATE_TASK } from '../actionsTypes'
+import { TECNOLOGIA_IN, CREATE_TASK, GET_TASKS } from '../actionsTypes'
 import axios from 'axios'
 
 import { alertin } from '../alertas/alertas'
@@ -6,6 +6,13 @@ import { alertin } from '../alertas/alertas'
 export const getTecnologias = () => {
     return {
         type: TECNOLOGIA_IN,
+    }
+}
+
+export const getSaveTasks = tasks => {
+    return {
+        type: GET_TASKS,
+        payload: tasks
     }
 }
 
@@ -52,5 +59,23 @@ export const saveTask = (projeto, task) => {
                     texto: 'Erro em criar a Task'}))
             })
         
+    }
+}
+
+
+export const getTasks = () => {
+    return (dispatch, getState) => {
+        const token = 'Bearer ' + getState().usuario.token
+        axios.get("http://localhost:3001/projects/tasks", {params: { token } })
+            .then(response => {
+                const tasks = response.data
+                dispatch(getSaveTasks(tasks))              
+            })
+            .catch(req => {
+                dispatch(alertin({open: false,
+                    alertTitle: 'Erro',
+                    severity: 'error',
+                    texto: 'Erro em carregar as Tarefas'}))
+            })  
     }
 }

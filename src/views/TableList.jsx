@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Grid, Row, Col, Table } from "react-bootstrap";
 import {  Redirect, Link } from "react-router-dom";
+import { connect } from 'react-redux';
 
 import Button from "components/CustomButton/CustomButton.jsx";
 import Card from "components/Card/Card.jsx";
@@ -87,4 +88,16 @@ class ListaProjetos extends Component {
   }
 }
 
-export default ListaProjetos;
+const mapStateToProps = ({ usuario, projeto, task }) => {
+  return {
+      usuario,
+      projeto,
+      task
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ListaProjetos)

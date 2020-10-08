@@ -1,4 +1,4 @@
-import { TECNOLOGIA_IN, CREATE_TASK } from '../../actions/actionsTypes'
+import { TECNOLOGIA_IN, CREATE_TASK, GET_TASKS } from '../../actions/actionsTypes'
 
 const initialState = {
     backend: ["Javascript - Express", "Python - Django","Ruby - Rails", "PHP - Laravel", "Java - Spring"],
@@ -13,7 +13,8 @@ const initialState = {
     dataFim: '',
     tecnologiaBack: '',
     tecnologiaFront: '',
-    tecnologiabd: ''
+    tecnologiabd: '',
+    getTasks: {},
 }
 
 const reducer = (state = initialState, action) => {
@@ -28,6 +29,11 @@ const reducer = (state = initialState, action) => {
         let { title, about, projeto, categoria, subcategoria, dataFim, dataInicio, tecnologiabd, tecnologiaFront, tecnologiaBack } = action.payload
         return {...state, title, about, projeto, categoria, subcategoria, dataFim, dataInicio, tecnologiabd, tecnologiaFront, tecnologiaBack }
     
+    case GET_TASKS:
+        let getTasks = action.payload
+        return {                
+            ...state, getTasks
+        }  
     default:
         return state
     }
