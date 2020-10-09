@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 export class TasksRelatorio extends Component {
 
-  
 
   handleCheckbox = event => {
     const target = event.target;
@@ -16,7 +15,6 @@ export class TasksRelatorio extends Component {
       [target.name]: target.checked
     });
   };
-
 
  
   render() {

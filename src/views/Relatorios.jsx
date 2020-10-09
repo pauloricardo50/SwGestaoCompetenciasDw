@@ -26,26 +26,32 @@ class Relatorios extends Component {
   contaLinguagensFront = () => {    
     var listaQtdFront = [0,0,0,0,0]
     if(this.props.task.getTasks.tasks!==undefined){
-      const tamanho = this.props.task.getTasks.tasks.length
+      var tamanho = 0
       const tasks = this.props.task.getTasks.tasks
+
       // this.props.task.getTasks.tasks[0].frontend
       // this.props.task.frontend
       // ["Javascript - React", "Javascript - Angular", "Javascript - Vue.js", "Javascript - Ionic","Dart - Flutter"]
       tasks.map((task, index) => {
         if(task.frontend == "Javascript - React"){
           listaQtdFront[0] += 1
+          tamanho +=1          
         }
         else if(task.frontend == "Javascript - Angular"){
           listaQtdFront[1] += 1
+          tamanho +=1 
         }
         else if(task.frontend == "Javascript - Vue.js"){
           listaQtdFront[2] += 1
+          tamanho +=1 
         }
         else if(task.frontend == "Javascript - Ionic"){
           listaQtdFront[3] += 1
+          tamanho +=1 
         }
         else if(task.frontend == "Dart - Flutter"){
           listaQtdFront[4] += 1
+          tamanho +=1 
         }
       })
       const data = [
@@ -61,7 +67,7 @@ class Relatorios extends Component {
   contaLinguagensBack = () => {    
     var listaQtdBack = [0,0,0,0,0]
     if(this.props.task.getTasks.tasks!==undefined){
-      const tamanho = this.props.task.getTasks.tasks.length
+      var tamanho = 0
       const tasks = this.props.task.getTasks.tasks
       // this.props.task.getTasks.tasks[0].frontend
       // this.props.task.frontend
@@ -69,18 +75,23 @@ class Relatorios extends Component {
       tasks.map((task, index) => {
         if(task.backend == "Javascript - Express"){
           listaQtdBack[0] += 1
+          tamanho +=1 
         }
         else if(task.backend == "Python - Django"){
           listaQtdBack[1] += 1
+          tamanho +=1 
         }
         else if(task.backend == "Ruby - Rails"){
           listaQtdBack[2] += 1
+          tamanho +=1 
         }
         else if(task.backend == "PHP - Laravel"){
           listaQtdBack[3] += 1
+          tamanho +=1 
         }
         else if(task.backend == "Java - Spring"){
           listaQtdBack[4] += 1
+          tamanho +=1 
         }
       })
       const data = [
@@ -96,7 +107,7 @@ class Relatorios extends Component {
   contaLinguagensBanco = () => {    
     var listaQtdBanco = [0,0,0,0,0]
     if(this.props.task.getTasks.tasks!==undefined){
-      const tamanho = this.props.task.getTasks.tasks.length
+      var tamanho = 0
       const tasks = this.props.task.getTasks.tasks
       // this.props.task.getTasks.tasks[0].frontend
       // this.props.task.frontend
@@ -104,18 +115,23 @@ class Relatorios extends Component {
       tasks.map((task, index) => {
         if(task.banco == "MongoDB"){
           listaQtdBanco[0] += 1
+          tamanho +=1 
         }
         else if(task.banco == "Firebase"){
           listaQtdBanco[1] += 1
+          tamanho +=1 
         }
         else if(task.banco == "Oracle"){
           listaQtdBanco[2] += 1
+          tamanho +=1 
         }
         else if(task.banco == "MySQL"){
           listaQtdBanco[3] += 1
+          tamanho +=1 
         }
         else if(task.banco == "DynamoDB"){
           listaQtdBanco[4] += 1
+          tamanho +=1 
         }
       })
       const data = [
@@ -176,19 +192,20 @@ class Relatorios extends Component {
       dataBack = this.contaLinguagensBack()
       dataBanco = this.contaLinguagensBanco()
       dataLinguagensFront = {
-                labels: [dataFront[0].toString()+"%", dataFront[1].toString()+"%", dataFront[2].toString()+"%",dataFront[3].toString()+"%",dataFront[4].toString()+"%"],
+                labels: [dataFront[0].toFixed(2).toString()+"%", dataFront[1].toFixed(2).toString()+"%", dataFront[2].toFixed(2).toString()+"%",dataFront[3].toFixed(2).toString()+"%",dataFront[4].toFixed(2).toString()+"%"],
                 series: [dataFront[0],dataFront[1],dataFront[2],dataFront[3],dataFront[4]]
       };
       dataLinguagensBack = {
-        labels: [dataBack[0].toString()+"%", dataBack[1].toString()+"%", dataBack[2].toString()+"%",dataBack[3].toString()+"%",dataBack[4].toString()+"%"],
+        labels: [dataBack[0].toFixed(2).toString()+"%", dataBack[1].toFixed(2).toString()+"%", dataBack[2].toFixed(2).toString()+"%",dataBack[3].toFixed(2).toString()+"%",dataBack[4].toFixed(2).toString()+"%"],
         series: [dataBack[0],dataBack[1],dataBack[2],dataBack[3],dataBack[4]]
       };
       dataLinguagensBanco = {
-        labels: [dataBanco[0].toString()+"%", dataBanco[1].toString()+"%", dataBanco[2].toString()+"%",dataBanco[3].toString()+"%",dataBanco[4].toString()+"%"],
+        labels: [dataBanco[0].toFixed(2).toString()+"%", dataBanco[1].toFixed(2).toString()+"%", dataBanco[2].toFixed(2).toString()+"%",dataBanco[3].toFixed(2).toString()+"%",dataBanco[4].toFixed(2).toString()+"%"],
         series: [dataBanco[0],dataBanco[1],dataBanco[2],dataBanco[3],dataBanco[4]]
       };
      
     }  
+
     
     return (
       <div className="content">

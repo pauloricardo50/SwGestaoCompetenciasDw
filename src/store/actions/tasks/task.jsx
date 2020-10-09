@@ -66,8 +66,9 @@ export const saveTask = (projeto, task) => {
 export const getTasks = () => {
     return (dispatch, getState) => {
         const token = 'Bearer ' + getState().usuario.token
-        axios.get("http://localhost:3001/projects/tasks", {params: { token } })
+        axios.get("https://afternoon-brook-96552.herokuapp.com/projects/tasks", {params: { token } })
             .then(response => {
+                
                 const tasks = response.data
                 dispatch(getSaveTasks(tasks))              
             })
